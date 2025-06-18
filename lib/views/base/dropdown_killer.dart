@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:village_wheels_delivery_boy/lib/services/extensions.dart';
+import 'package:village_wheels_delivery_boy/services/extensions.dart';
 
 import '../../services/constants.dart';
 import '../../services/theme.dart';

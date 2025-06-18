@@ -4,7 +4,7 @@ import 'package:get/get_connect/http/src/multipart/form_data.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:village_wheels_delivery_boy/lib/services/extensions.dart';
+import 'package:village_wheels_delivery_boy/services/extensions.dart';
 
 import '../../services/constants.dart';
 import '../api/api_client.dart';

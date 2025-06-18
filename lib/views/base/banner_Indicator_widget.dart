@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:village_wheels_delivery_boy/lib/services/theme.dart';
+
+import '../../services/theme.dart';
 
 class BannerIndicatorWidget extends StatelessWidget {
   const BannerIndicatorWidget({
