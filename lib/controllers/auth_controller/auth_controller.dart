@@ -4,10 +4,10 @@ import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
-import '../data/models/response/response_model.dart';
-import '../data/models/user/user_model.dart';
-import '../data/repositories/auth_repo.dart';
-import '../views/base/custom_toast.dart';
+import '../../data/models/response/response_model.dart';
+import '../../data/models/user/user_model.dart';
+import '../../data/repositories/auth_repo.dart';
+import '../../views/base/custom_toast.dart';
 
 class AuthController extends GetxController implements GetxService {
   final AuthRepo authRepo;
@@ -112,36 +112,6 @@ class AuthController extends GetxController implements GetxService {
     update();
     return responseModel;
   }
-
-  // Future<ResponseModel> signUp({required String name, required String email, required String mobile}) async {
-  //   log('----------- signUp Called ----------');
-  //
-  //   ResponseModel responseModel;
-  //   isLoading = true;
-  //   update();
-  //
-  //   try {
-  //     Map<String, dynamic> data = {
-  //       'name': name,
-  //       'email': email,
-  //       'mobile': mobile,
-  //     };
-  //
-  //     Response response = await authRepo.signUp(data: FormData.fromMap(data));
-  //     if (response.statusCode == 200 && (response.data['success'])) {
-  //       responseModel = ResponseModel(true, response.statusMessage ?? '', response.data['message']);
-  //     } else {
-  //       responseModel = ResponseModel(false, response.statusMessage ?? '', response.data['message']);
-  //     }
-  //   } catch (e) {
-  //     responseModel = ResponseModel(false, "CATCH");
-  //     log('++++++++++++++ ${e.toString()} +++++++++++++++++++++++++', name: "ERROR AT signUp()");
-  //   }
-  //
-  //   isLoading = false;
-  //   update();
-  //   return responseModel;
-  // }
 
   bool isLoggedIn() {
     return authRepo.isLoggedIn();

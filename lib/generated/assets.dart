@@ -4,7 +4,10 @@ class Assets {
 
   static const String imagesAppLogo = 'assets/images/app_logo.png';
   static const String imagesExclaim = 'assets/images/exclaim.png';
+  static const String imagesLogin = 'assets/images/login.png';
+  static const String imagesOtpLogin = 'assets/images/otp-login.png';
   static const String imagesPlaceholder = 'assets/images/placeholder.jpg';
+  static const String imagesProfileUnderReview = 'assets/images/profile_under_review.png';
   static const String imagesShimmer = 'assets/images/shimmer.gif';
   static const String imagesSplash = 'assets/images/splash.png';
   static const String lottiesCheck = 'assets/lotties/check.json';

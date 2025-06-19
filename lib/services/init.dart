@@ -4,7 +4,7 @@ import 'package:get/instance_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../controllers/PermissionController.dart';
-import '../controllers/auth_controller.dart';
+import '../controllers/auth_controller/auth_controller.dart';
 import '../controllers/basic_controller.dart';
 import '../data/api/api_client.dart';
 import '../data/repositories/auth_repo.dart';
