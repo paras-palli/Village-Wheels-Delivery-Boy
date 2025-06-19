@@ -113,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Navigator.push(
                                     context,
                                     getCustomRoute(
-                                      child: const OtpVerificationScreen(),
+                                      child: OtpVerificationScreen(phoneNumber: _phoneController.text.trim()),
                                       type: PageTransitionType.rightToLeft,
                                     ),
                                   );

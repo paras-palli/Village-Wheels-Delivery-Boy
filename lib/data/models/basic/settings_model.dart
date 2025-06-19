@@ -1,11 +1,11 @@
-class BusinessSetting {
+class SettingsModel {
   int? id;
   String? key;
   String? value;
   DateTime? createdAt;
   DateTime? updatedAt;
 
-  BusinessSetting({
+  SettingsModel({
     this.id,
     this.key,
     this.value,
@@ -13,7 +13,7 @@ class BusinessSetting {
     this.updatedAt,
   });
 
-  factory BusinessSetting.fromJson(Map<String, dynamic> json) => BusinessSetting(
+  factory SettingsModel.fromJson(Map<String, dynamic> json) => SettingsModel(
     id: json["id"],
     key: json["key"],
     value: json["value"],

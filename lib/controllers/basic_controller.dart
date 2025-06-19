@@ -14,18 +14,9 @@ class BasicController extends GetxController implements GetxService {
   BasicController({required this.basicRepo});
 
   bool isLoading = false;
-  bool statesLoading = false;
-  bool cityLoading = false;
-
-  // SettingsModel? settings;
-  // List<BannerModel> banners = [];
-  //
-  // List<StateModel> states = [];
-  // List<CityModel> cities = [];
-
 
   //
-  List<BusinessSetting> settings = [];
+  List<SettingsModel> settings = [];
   Future<ResponseModel> fetchSettings() async {
     log('----------- fetchSettings Called ----------');
 
@@ -36,8 +27,9 @@ class BasicController extends GetxController implements GetxService {
     try {
       Response response = await basicRepo.settings();
       if (response.statusCode == 200) {
-        if (response.body['success'] == true && response.body['data'] != null) {
-          responseModel = ResponseModel(true, '${response.body['message']}',);
+        if (response.body['success'] == true && response.body['data'] is List) {
+          settings = (response.body['data'] as List<dynamic>).map((e) => SettingsModel.fromJson(e)).toList();
+          responseModel = ResponseModel(true, '${response.body['message']}');
         } else {
           responseModel = ResponseModel(false, response.body['message']?.toString() ?? 'Something Went Wrong',);
         }
@@ -52,6 +44,13 @@ class BasicController extends GetxController implements GetxService {
     isLoading = false;
     update();
     return responseModel;
+  }
+
+  String? getAppLinkAndAppVersion(String key) {
+    for (var element in settings) {
+      if (element.key == key) return element.value;
+    }
+    return null;
   }
 
   String getHtmlContent(BusinessSettingName name) {

@@ -4,16 +4,15 @@ import '../../services/constants.dart';
 import '../api/api_client.dart';
 
 class BasicRepo {
-  final ApiClient dioClient;
-  const BasicRepo({required this.dioClient});
+  final ApiClient apiClient;
+  const BasicRepo({required this.apiClient});
 
-  Future<Response> settings() async => dioClient.getData(AppConstants.settings);
+  Future<Response> settings() async => apiClient.getData(AppConstants.settings);
 
-  Future<Response> getCity({required int stateId}) async => dioClient.getData(AppConstants.cities, query: {
-    'id': stateId,
-  });
+  // Future<Response> getCity({required int stateId}) async => apiClient.getData(AppConstants.cities, query: {
+  //   'id': stateId,
+  // });
+  //
+  // Future<Response> getStates() async => apiClient.getData(AppConstants.states);
 
-  Future<Response> getStates() async => dioClient.getData(AppConstants.states);
-
-  // Future<Response> getBanner() async => dioClient.getData(AppConstants.banner);
 }

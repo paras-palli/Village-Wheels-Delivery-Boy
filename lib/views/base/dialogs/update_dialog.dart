@@ -63,7 +63,7 @@ class UpdateDialog extends StatelessWidget {
                       if (skip)
                         InkWell(
                           onTap: () {
-                            Navigator.pop(context, false);
+                            Navigator.pop(context, true);
                           },
                           child: Container(
                             height: 40,
