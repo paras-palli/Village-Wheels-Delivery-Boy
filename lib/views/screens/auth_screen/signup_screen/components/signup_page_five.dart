@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:village_wheels/views/base/custom_image.dart';
-import 'package:village_wheels/views/screens/auth_screens/signup_screen/signup_four_screen/components/updated_cnacelled_check_image.dart';
-import 'package:village_wheels/views/screens/auth_screens/signup_screen/signup_four_screen/signup_page_four.dart';
+import 'package:village_wheels_delivery_boy/controllers/auth_controller/auth_controller.dart';
+import 'package:village_wheels_delivery_boy/controllers/auth_controller/register_controller.dart';
+import 'package:village_wheels_delivery_boy/generated/assets.dart';
+import 'package:village_wheels_delivery_boy/services/input_decoration.dart';
 
-import '../../../../../controllers/auth_controller/auth_controller.dart';
-import '../../../../../controllers/register_controller.dart';
-
-import '../../../../../services/input_decoration.dart';
+import '../signup_four_screen/components/updated_cnacelled_check_image.dart';
+import '../signup_four_screen/signup_page_four.dart';
 
 class SignUpPageFive extends StatelessWidget {
   const SignUpPageFive({super.key});
@@ -20,13 +19,12 @@ class SignUpPageFive extends StatelessWidget {
         child: SingleChildScrollView(
           child: GetBuilder<AuthController>(
             builder: (authCtrl) {
-              //  final data = authCtrl.userModel;
               return GetBuilder<RegisterController>(
                 builder: (controller) {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ImageAndTitleWidget(
+                      const ImageAndTitleWidget(
                         image: Assets.imagesBank,
                         title: "Bank Details (Optional)",
                       ),
@@ -45,54 +43,40 @@ class SignUpPageFive extends StatelessWidget {
                             ),
                           ),
                           floating: true,
-                          borderColor: Color(0xff1E3A8A),
+                          borderColor: const Color(0xff1E3A8A),
                           borderWidth: 0.5,
                           borderRadius: 8,
                           label: "Bank Name",
-                          labelColor: Color(0xffF97316),
+                          labelColor: const Color(0xffF97316),
                           hint: "Select Your Bank",
-                          hintStyle:
-                              Theme.of(context).textTheme.labelMedium?.copyWith(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w300,
-                                    color: Color(0xff6B7280),
-                                  ),
+                          hintStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w300,
+                            color: const Color(0xff6B7280),
+                          ),
                         ),
-                        // validator: (val) {
-                        //   if (val!.isEmpty) {
-                        //     return "Bank Name can't be empty!";
-                        //   }
-                        //   return null;
-                        // },
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       TextFormField(
                         readOnly: false,
                         controller: controller.payeeName,
                         keyboardType: TextInputType.text,
                         decoration: CustomDecoration.inputDecoration(
                           floating: true,
-                          borderColor: Color(0xff1E3A8A),
+                          borderColor: const Color(0xff1E3A8A),
                           borderRadius: 8,
                           borderWidth: 0.5,
                           hint: "Enter Account Holder's Name",
-                          hintStyle:
-                              Theme.of(context).textTheme.labelMedium?.copyWith(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w300,
-                                    color: Color(0xff6B7280),
-                                  ),
+                          hintStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w300,
+                            color: const Color(0xff6B7280),
+                          ),
                           label: "Account Holder's Name ",
-                          labelColor: Color(0xffF97316),
+                          labelColor: const Color(0xffF97316),
                         ),
-                        // validator: (val) {
-                        //   if (val!.isEmpty) {
-                        //     return "Account Holder Name can't be empty!";
-                        //   }
-                        //   return null;
-                        // },
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Row(
                         children: [
                           Expanded(
@@ -104,29 +88,20 @@ class SignUpPageFive extends StatelessWidget {
                                 floating: true,
                                 label: 'IFSC Code',
                                 hint: "Enter IFSC Code",
-                                hintStyle: Theme.of(context)
-                                    .textTheme
-                                    .labelMedium
-                                    ?.copyWith(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w300,
-                                      color: Color(0xff6B7280),
-                                    ),
-                                labelColor: Color(0xffF97316),
-                                borderColor: Color(0xff1E3A8A),
+                                hintStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w300,
+                                  color: const Color(0xff6B7280),
+                                ),
+                                labelColor: const Color(0xffF97316),
+                                borderColor: const Color(0xff1E3A8A),
                                 borderRadius: 8,
                                 borderWidth: 0.5,
-                                contentPadding: EdgeInsets.all(15),
+                                contentPadding: const EdgeInsets.all(15),
                               ),
-                              // validator: (val) {
-                              //   if (val!.isEmpty) {
-                              //     return "IFSC can't be empty!";
-                              //   }
-                              //   return null;
-                              // },
                             ),
                           ),
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           Expanded(
                             child: TextFormField(
                               controller: controller.branchName,
@@ -143,13 +118,13 @@ class SignUpPageFive extends StatelessWidget {
                                     ?.copyWith(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w300,
-                                      color: Color(0xff6B7280),
+                                      color: const Color(0xff6B7280),
                                     ),
                                 borderRadius: 8,
-                                labelColor: Color(0xffF97316),
-                                borderColor: Color(0xff1E3A8A),
+                                labelColor: const Color(0xffF97316),
+                                borderColor: const Color(0xff1E3A8A),
                                 borderWidth: 0.5,
-                                contentPadding: EdgeInsets.all(15),
+                                contentPadding: const EdgeInsets.all(15),
                               ),
                               // validator: (val) {
                               //   if (val!.isEmpty) {
@@ -161,14 +136,14 @@ class SignUpPageFive extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       TextFormField(
                         keyboardType: TextInputType.number,
                         controller: controller.accountNumber,
                         readOnly: false,
                         decoration: CustomDecoration.inputDecoration(
                           floating: true,
-                          borderColor: Color(0xff1E3A8A),
+                          borderColor: const Color(0xff1E3A8A),
                           borderRadius: 8,
                           borderWidth: 0.5,
                           hint: 'Enter Account Number',
@@ -176,10 +151,10 @@ class SignUpPageFive extends StatelessWidget {
                               Theme.of(context).textTheme.labelMedium?.copyWith(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w300,
-                                    color: Color(0xff6B7280),
+                                    color: const Color(0xff6B7280),
                                   ),
                           label: "Account Number",
-                          labelColor: Color(0xffF97316),
+                          labelColor: const Color(0xffF97316),
                         ),
                         // validator: (val) {
                         //   if (val!.isEmpty) {
@@ -188,13 +163,13 @@ class SignUpPageFive extends StatelessWidget {
                         //   return null;
                         // },
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       TextFormField(
                         keyboardType: TextInputType.number,
                         controller: controller.reEnterAccountNumber,
                         decoration: CustomDecoration.inputDecoration(
                           floating: true,
-                          borderColor: Color(0xff1E3A8A),
+                          borderColor: const Color(0xff1E3A8A),
                           borderRadius: 8,
                           borderWidth: 0.5,
                           hint: 'Re-Enter Account Number',
@@ -202,10 +177,10 @@ class SignUpPageFive extends StatelessWidget {
                               Theme.of(context).textTheme.labelMedium?.copyWith(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w300,
-                                    color: Color(0xff6B7280),
+                                    color: const Color(0xff6B7280),
                                   ),
                           label: "Re-Enter Number",
-                          labelColor: Color(0xffF97316),
+                          labelColor: const Color(0xffF97316),
                         ),
                         // validator: (val) {
                         //   if (val!.isEmpty) {
@@ -217,7 +192,7 @@ class SignUpPageFive extends StatelessWidget {
                         //   return null;
                         // },
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Text(
                         "Upload Cancelled Check Photo",
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -226,8 +201,8 @@ class SignUpPageFive extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                             ),
                       ),
-                      SizedBox(height: 10),
-                      updatedcancelledcheckimage()
+                      const SizedBox(height: 10),
+                      const UpdatedCancelledCheckImage()
                     ],
                   );
                 },

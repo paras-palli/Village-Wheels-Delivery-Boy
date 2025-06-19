@@ -2,10 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:village_wheels/services/theme.dart';
-import 'package:village_wheels/views/base/custom_image.dart';
-
-import '../../../../../controllers/register_controller.dart';
 
 class SignUpPageTwo extends StatefulWidget {
   const SignUpPageTwo({super.key, this.isFrmProfile = false});

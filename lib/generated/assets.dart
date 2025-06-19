@@ -3,18 +3,26 @@ class Assets {
   Assets._();
 
   static const String imagesAppLogo = 'assets/images/app_logo.png';
+  static const String imagesBank = 'assets/images/Bank.png';
   static const String imagesExclaim = 'assets/images/exclaim.png';
+  static const String imagesFreshmart = 'assets/images/freshmart.png';
+  static const String imagesGrocery = 'assets/images/grocery.png';
+  static const String imagesLocationAccess = 'assets/images/location_access.png';
   static const String imagesLogin = 'assets/images/login.png';
+  static const String imagesMedicine = 'assets/images/medicine.png';
   static const String imagesOtpLogin = 'assets/images/otp-login.png';
   static const String imagesPlaceholder = 'assets/images/placeholder.jpg';
   static const String imagesProfileUnderReview = 'assets/images/profile_under_review.png';
+  static const String imagesRestront = 'assets/images/restront.png';
   static const String imagesShimmer = 'assets/images/shimmer.gif';
   static const String imagesSplash = 'assets/images/splash.png';
   static const String lottiesCheck = 'assets/lotties/check.json';
+  static const String lottiesLocationFinding = 'assets/lotties/location_finding.json';
   static const String lottiesNoInternet = 'assets/lotties/no_internet.json';
   static const String lottiesNoSearch = 'assets/lotties/no_search.json';
   static const String lottiesSuccess = 'assets/lotties/success.json';
   static const String svgsDelete = 'assets/svgs/delete.svg';
+  static const String svgsDropdown = 'assets/svgs/dropdown.svg';
   static const String svgsFilter = 'assets/svgs/filter.svg';
   static const String svgsFilterFunnel = 'assets/svgs/filter_funnel.svg';
   static const String svgsGym = 'assets/svgs/gym.svg';

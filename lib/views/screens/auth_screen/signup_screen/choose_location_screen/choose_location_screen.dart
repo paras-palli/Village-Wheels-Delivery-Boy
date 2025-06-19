@@ -1,18 +1,15 @@
 import 'dart:async';
-
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
 import 'package:lottie/lottie.dart';
-
 import 'package:shimmer/shimmer.dart';
+import 'package:village_wheels_delivery_boy/main.dart';
+import 'package:village_wheels_delivery_boy/views/base/custom_toast.dart';
 
 import '../../../../../controllers/location_controller.dart';
 import '../../../../../generated/assets.dart';
@@ -21,8 +18,6 @@ import '../../../../../services/route_helper.dart';
 import '../../../../../services/theme.dart';
 import '../../../../base/common_button.dart';
 import 'searched_location_screen.dart';
-
-// import 'package:location/location.dart';
 
 class ChooseLocationScreen extends StatefulWidget {
   const ChooseLocationScreen({super.key, this.isFromAddress = false});
@@ -35,10 +30,10 @@ class ChooseLocationScreen extends StatefulWidget {
 class _ChooseLocationScreenState extends State<ChooseLocationScreen> {
   @override
   void initState() {
-    super.initState();
-    Timer.run(() {
-      Get.find<LocationController>().fetchCurrentLocationPlace().then((value) {});
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Get.find<LocationController>().fetchCurrentLocationPlace();
     });
+    super.initState();
   }
 
   final Completer<GoogleMapController> _controller = Completer();
@@ -84,7 +79,7 @@ class _ChooseLocationScreenState extends State<ChooseLocationScreen> {
           ),
         ),
         body: GetBuilder<LocationController>(
-          builder: (location) {
+          builder: (LocationController location) {
             if (location.latLng == null) {
               return Center(
                 child: Column(
@@ -94,7 +89,6 @@ class _ChooseLocationScreenState extends State<ChooseLocationScreen> {
                     const Spacer(),
                     LottieBuilder.asset(
                       Assets.lottiesLocationFinding,
-                      // height: size.height * .4,
                       width: size.width * .8,
                     ),
                     const Spacer(),
@@ -115,7 +109,7 @@ class _ChooseLocationScreenState extends State<ChooseLocationScreen> {
                     zoomControlsEnabled: false,
                     mapType: MapType.normal,
                     initialCameraPosition: CameraPosition(
-                      target: location.latLng!, //latlong!,
+                      target: location.latLng!,
                       zoom: 14.4746,
                     ),
                     myLocationEnabled: true,
@@ -277,7 +271,7 @@ class LocConfirmBtnText extends StatelessWidget {
                 const SizedBox(width: 4),
                 Expanded(
                   child: Text(
-                    location.location ?? 'NA',
+                    location.location ?? 'Na',
                     style: GoogleFonts.montserrat(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
@@ -299,7 +293,7 @@ class LocConfirmBtnText extends StatelessWidget {
                   location.getAddressFromLocation(currentCenter);
                   Navigator.pop(navigatorKey.currentContext!, currentCenter);
                 } else {
-                  Fluttertoast.showToast(msg: "Please select a valid location");
+                  showCustomToast(msg: "Please select a valid location", toastType: ToastType.warning);
                 }
               },
             ),

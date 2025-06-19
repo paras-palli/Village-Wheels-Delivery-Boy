@@ -5,6 +5,7 @@ import 'package:village_wheels_delivery_boy/services/route_helper.dart';
 import 'package:village_wheels_delivery_boy/views/base/common_button.dart';
 import 'package:village_wheels_delivery_boy/views/base/custom_image.dart';
 import 'package:village_wheels_delivery_boy/views/base/dialogs/logout_dialog.dart';
+import 'package:village_wheels_delivery_boy/views/screens/dashboard_screen/dashboard_screen.dart';
 
 class ProfileUnderReviewScreen extends StatelessWidget {
   const ProfileUnderReviewScreen({super.key});

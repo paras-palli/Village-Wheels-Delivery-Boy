@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:village_wheels/controllers/register_controller.dart';
-import 'package:village_wheels/services/route_helper.dart';
-import 'package:village_wheels/views/base/image_picker_sheet.dart';
-import 'package:village_wheels/views/screens/auth_screens/signup_screen/components/components/icons_widget.dart';
-import 'package:village_wheels/views/screens/auth_screens/signup_screen/components/components/show_image.dart';
+import 'package:village_wheels_delivery_boy/controllers/auth_controller/register_controller.dart';
+import 'package:village_wheels_delivery_boy/services/route_helper.dart';
+import 'package:village_wheels_delivery_boy/views/base/image_picker_sheet.dart';
 
-class updatedcancelledcheckimage extends StatelessWidget {
-  const updatedcancelledcheckimage({
-    super.key,
-  });
+import '../../components/components/icons_widget.dart';
+import '../../components/components/show_image.dart';
+
+class UpdatedCancelledCheckImage extends StatelessWidget {
+  const UpdatedCancelledCheckImage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +59,7 @@ class updatedcancelledcheckimage extends StatelessWidget {
                         : Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.camera_alt, color: const Color(0xFF233A7D), size: 32),
+                              const Icon(Icons.camera_alt, color: const Color(0xFF233A7D), size: 32),
                               const SizedBox(height: 8),
                               Text(
                                 "Add Cancelled Check Image",

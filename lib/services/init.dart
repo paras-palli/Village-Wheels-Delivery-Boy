@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:get/instance_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:village_wheels_delivery_boy/controllers/auth_controller/otp_controller.dart';
+import 'package:village_wheels_delivery_boy/controllers/location_controller.dart';
 
 import '../controllers/PermissionController.dart';
 import '../controllers/auth_controller/auth_controller.dart';
@@ -22,7 +23,7 @@ class Init {
       Get.lazyPut(() => ApiClient(appBaseUrl: AppConstants.baseUrl, sharedPreferences: sharedPreferences));
 
       // Location Controller
-      // Get.lazyPut(() => LocationController());
+      Get.lazyPut(() => LocationController());
 
       Get.lazyPut(() => PermissionController());
 

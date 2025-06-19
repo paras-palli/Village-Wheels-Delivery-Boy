@@ -4,11 +4,11 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:village_wheels_delivery_boy/views/base/CustomEmptyDataWidget.dart';
 
 import '../../../../../controllers/location_controller.dart';
 import '../../../../../services/input_decoration.dart';
 import '../../../../../services/theme.dart';
-import '../../../../base/dialogs/custom_nodata_found.dart';
 
 class SearchedLoactionScreen extends StatelessWidget {
   const SearchedLoactionScreen({super.key});
@@ -80,8 +80,8 @@ class SearchedLoactionScreen extends StatelessWidget {
                 GetBuilder<LocationController>(builder: (locationController) {
               if (locationController.listOfLocations.isEmpty) {
                 return const Center(
-                  child: CustomNoDataFoundWidget(
-                    text: 'No address found!',
+                  child: EmptyWidget(
+                    title: 'No address found!',
                   ),
                 );
               }

@@ -9,6 +9,7 @@ class CustomDecoration {
     Widget? icon,
     String? prefixText,
     String? label,
+    Color? labelColor,
     String? hint,
     TextStyle? hintStyle,
     Widget? suffix,
@@ -52,112 +53,108 @@ class CustomDecoration {
       ),
       prefixIcon: (icon != null || prefixText != null)
           ? Builder(
-              builder: (context) {
-                if (icon != null) {
-                  return icon;
-                } else if (prefixText != null) {
-                  return Padding(
-                    padding: const EdgeInsets.only(
-                      left: 20.0,
-                      right: 10.0,
+        builder: (context) {
+          if (icon != null) {
+            return icon;
+          } else if (prefixText != null) {
+            return Padding(
+              padding: const EdgeInsets.only(
+                left: 20.0,
+                right: 10.0,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    prefixText,
+                    style: GoogleFonts.montserrat(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: textSecondary,
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          prefixText,
-                          style: GoogleFonts.montserrat(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            color: textSecondary,
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                }
-                return const SizedBox.shrink();
-              },
-            )
+                  ),
+                ],
+              ),
+            );
+          }
+          return const SizedBox.shrink();
+        },
+      )
           : null,
       suffixIcon: suffix,
       label: label != null
           ? Text(
-              label,
-              style: GoogleFonts.montserrat(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                color: textPrimary,
-              ),
-            )
+        label,
+        style: GoogleFonts.montserrat(
+          fontSize: 17,
+          fontWeight: FontWeight.w400,
+          color: labelColor ?? textPrimary,
+        ),
+      )
           : null,
       hintText: hint,
-      hintStyle: hintStyle ??
-          GoogleFonts.montserrat(
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
-            color: textSecondary,
-          ),
+      hintStyle: hintStyle ?? GoogleFonts.montserrat(fontSize: 16, fontWeight: FontWeight.w400, color: Colors.grey),
       floatingLabelBehavior: floating ? FloatingLabelBehavior.always : FloatingLabelBehavior.auto,
       contentPadding: contentPadding,
     );
   }
 
   static InputDecoration dropdown(
-    BuildContext context, {
-    String? icon,
-    String? label,
-    bool filled = true,
-    TextStyle? hintStyle,
-    bool floating = false,
-  }) {
+      BuildContext context, {
+        String? icon,
+        String? label,
+        bool filled = true,
+        TextStyle? hintStyle,
+        bool floating = false,
+        double borderRadius = 12,
+      }) {
     return InputDecoration(
       fillColor: Colors.white,
       filled: filled,
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 2),
+        borderRadius: BorderRadius.circular(borderRadius),
+        borderSide: const BorderSide(color: Colors.grey, width: 1),
       ),
       disabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(borderRadius),
         borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 2),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(borderRadius),
         borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 2),
       ),
       errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(borderRadius),
         borderSide: const BorderSide(color: Colors.redAccent, width: 0.4),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(borderRadius),
         borderSide: const BorderSide(color: Colors.redAccent, width: 0.4),
       ),
       prefixIcon: icon != null
           ? SizedBox(
-              width: 48,
-              height: 48,
-              child: Center(
-                child: CustomImage(
-                  path: icon,
-                  height: 16,
-                  width: 16,
-                ),
-              ),
-            )
+        width: 48,
+        height: 48,
+        child: Center(
+          child: CustomImage(
+            path: icon,
+            height: 16,
+            width: 16,
+          ),
+        ),
+      )
           : null,
       label: label != null
           ? Text(
-              label,
-              // textAlign: TextAlign.center,
-              style: GoogleFonts.montserrat(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                color: textPrimary,
-              ),
-            )
+        label,
+        // textAlign: TextAlign.center,
+        style: GoogleFonts.montserrat(
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          color: textPrimary,
+        ),
+      )
           : null,
       hintText: label,
       hintStyle: hintStyle ??

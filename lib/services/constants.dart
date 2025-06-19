@@ -50,9 +50,13 @@ class AppConstants {
 
   // Profile
   static const String getProfileData = 'api/vendor/v1/auth/profile';
+  static const String updateProfileUri = 'api/vendor/v1/auth/update';
+  static const String registerUri = 'api/vendor/v1/auth/register';
 
   //--------basic---------
   static const String settings = 'api/v1/basic/settings';
+  static const String getStates = 'api/user/v1/basic/get-states';
+  static const String getCities = 'api/user/v1/basic/get-cities';
 
   //
   static const double padding = 16;

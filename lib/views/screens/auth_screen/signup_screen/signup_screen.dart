@@ -1,21 +1,24 @@
 import 'dart:async';
 import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:village_wheels/views/screens/DashBoard/dashboard_screen.dart';
-import 'package:village_wheels/views/screens/auth_screens/signup_screen/signup_page_three/signup_page_three.dart';
-import 'package:village_wheels/views/screens/auth_screens/signup_screen/components/signup_page_two.dart';
+import 'package:village_wheels_delivery_boy/controllers/auth_controller/register_controller.dart';
+import 'package:village_wheels_delivery_boy/controllers/basic_controller.dart';
+import 'package:village_wheels_delivery_boy/services/extensions.dart';
+import 'package:village_wheels_delivery_boy/views/base/custom_toast.dart';
+import 'package:village_wheels_delivery_boy/views/screens/dashboard_screen/dashboard_screen.dart';
 
 import '../../../../controllers/auth_controller/auth_controller.dart';
-import '../../../../controllers/register_controller.dart';
+import '../../../../controllers/location_controller.dart';
 import '../../../../services/route_helper.dart';
 import '../../../base/common_button.dart';
-import '../under_review_screen.dart';
+import '../components/profile_under_review_screen.dart';
 import 'components/signup_page_five.dart';
-import 'signup_four_screen/signup_page_four.dart';
 import 'components/signup_page_one.dart';
-import '../../../../controllers/location_controller.dart';
+import 'components/signup_page_three.dart';
+import 'components/signup_page_two.dart';
+import 'signup_four_screen/signup_page_four.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key, this.isFrmProfile = false});
@@ -41,30 +44,17 @@ class _SignupScreenState extends State<SignupScreen> {
   void initState() {
     super.initState();
     Timer.run(() async {
-      final locationCtrl = Get.find<LocationController>();
-      if (locationCtrl.states.isEmpty) {
-        log('Loading states...', name: 'RegisterUser');
-        final statesResponse = await locationCtrl.getStates();
-        if (!statesResponse.isSuccess) {
-          throw Exception('Failed to load states: ${statesResponse.message}');
-        }
-        log('States loaded successfully', name: 'RegisterUser');
+      final BasicController basicController = Get.find<BasicController>();
+      if (basicController.states.isEmpty) {
+        final statesResponse = await basicController.fetchStates();
+        if (!statesResponse.isSuccess) showCustomToast(msg: statesResponse.message, toastType: ToastType.warning);
       }
-      signupPages = [
-        const SignupPageOne(),
-        const SignUpPageTwo(),
-        const SignupPageThree(),
-        SignupPageFour(),
-        const SignUpPageFive(),
-      ];
-      final authCtrl = Get.find<AuthController>();
+
+      final RegisterController registerController = Get.find<RegisterController>();
       if (widget.isFrmProfile) {
-        authCtrl.updateProfileData();
-        //---updated---
+        registerController.prefillProfileData();
       } else {
-        if (authCtrl.userModel != null) {
-          authCtrl.setNumber();
-        }
+        registerController.phone.text = (Get.find<AuthController>().userModel?.phone).getIfValid;
       }
     });
   }
@@ -107,16 +97,16 @@ class _SignupScreenState extends State<SignupScreen> {
                                   Expanded(
                                     child: Container(
                                       color: selectedIndex < i
-                                          ? Color(0xFFE6ECF5)
-                                          : Color(0xFF233A7D),
+                                          ? const Color(0xFFE6ECF5)
+                                          : const Color(0xFF233A7D),
                                       height: 8,
                                     ),
                                   ),
                                   Container(
                                     width: 45,
                                     height: 40,
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xFFE6ECF5),
+                                    decoration: const BoxDecoration(
+                                      color: Color(0xFFE6ECF5),
                                       shape: BoxShape.circle,
                                     ),
                                     child: Center(
@@ -127,27 +117,21 @@ class _SignupScreenState extends State<SignupScreen> {
                                           shape: BoxShape.circle,
                                           color: selectedIndex < i
                                               ? Colors.white
-                                              : Color(0xFF233A7D),
+                                              : const Color(0xFF233A7D),
                                         ),
                                         child: Center(
                                           child: selectedIndex > i
-                                              ? Icon(
+                                              ? const Icon(
                                                   Icons.check,
                                                   color: Colors.white,
                                                 )
                                               : Text(
                                                   '${i + 1}',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .labelMedium!
-                                                      .copyWith(
-                                                        fontSize: 15,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        color: selectedIndex < i
-                                                            ? Color(0xFF233A7D)
-                                                            : Colors.white,
-                                                      ),
+                                                  style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                                                    fontSize: 15,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: selectedIndex < i ? const Color(0xFF233A7D) : Colors.white,
+                                                  ),
                                                 ),
                                         ),
                                       ),
@@ -156,8 +140,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                   Expanded(
                                     child: Container(
                                       color: selectedIndex < i
-                                          ? Color(0xFFE6ECF5)
-                                          : Color(0xFF233A7D),
+                                          ? const Color(0xFFE6ECF5)
+                                          : const Color(0xFF233A7D),
                                       height: 8,
                                     ),
                                   ),
@@ -172,7 +156,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   'KYC',
                                   'Bank'
                                 ][i],
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.w200,
                                   fontSize: 14,
                                 ),
@@ -226,22 +210,15 @@ class _SignupScreenState extends State<SignupScreen> {
                             radius: 8,
                             isLoading: controller.isLoading,
                             onTap: () {
-                              final locationCtrl =
-                                  Get.find<LocationController>();
+                              final LocationController locationCtrl = Get.find<LocationController>();
                               if (formkey.currentState!.validate()) {
                                 if (selectedIndex < signupPages.length - 1) {
-                                  if (selectedIndex == 1 &&
-                                      controller.selectedBussiness.isEmpty) {
-                                    Fluttertoast.showToast(
-                                        msg: "Please select a bussiness");
-
+                                  if (selectedIndex == 1 && controller.selectedBussiness.isEmpty) {
+                                    showCustomToast(msg: "Please select a bussiness", toastType: ToastType.info);
                                     return;
                                   }
-                                  if (selectedIndex == 2 &&
-                                      locationCtrl.latLng == null) {
-                                    Fluttertoast.showToast(
-                                        msg:
-                                            "Please select a location on the map");
+                                  if (selectedIndex == 2 && locationCtrl.latLng == null) {
+                                    showCustomToast(msg: "Please select a location on the map", toastType: ToastType.info);
                                     return;
                                   }
 
@@ -278,8 +255,8 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   void signupUser(RegisterController controller) {
-    log("${controller.registerData()}");
-    // if (false)
+    log("${controller.registerData()}", name: 'registerData');
+
     controller.registerUser().then((value) {
       if (value.isSuccess) {
         if (!mounted) return;
@@ -287,25 +264,19 @@ class _SignupScreenState extends State<SignupScreen> {
           getCustomRoute(child: const ProfileUnderReviewScreen()),
           (route) => false,
         );
-        Fluttertoast.showToast(msg: value.message);
+        showCustomToast(msg: value.message);
         final auth = Get.find<AuthController>();
         auth.getUserProfileData().then((value) {
           if (value.isSuccess) {
             if (auth.userModel?.status == 'active') {
-              Navigator.of(context).pushAndRemoveUntil(
-                getCustomRoute(child: const DashboardScreen()),
-                (route) => false,
-              );
+              Navigator.of(context).pushAndRemoveUntil(getCustomRoute(child: const DashboardScreen()), (route) => false);
             } else {
-              Navigator.of(context).pushAndRemoveUntil(
-                getCustomRoute(child: const ProfileUnderReviewScreen()),
-                (route) => false,
-              );
+              Navigator.of(context).pushAndRemoveUntil(getCustomRoute(child: const ProfileUnderReviewScreen()), (route) => false);
             }
-          } else {}
+          }
         });
       } else {
-        Fluttertoast.showToast(msg: value.message);
+        showCustomToast(msg: value.message, toastType: ToastType.warning);
       }
     });
   }
@@ -315,7 +286,7 @@ class _SignupScreenState extends State<SignupScreen> {
       if (val.isSuccess) {
         if (!mounted) return;
         Navigator.pop(context);
-        Fluttertoast.showToast(msg: 'Profile updated successfully');
+        showCustomToast(msg: 'Profile updated successfully');
         Get.find<AuthController>().getUserProfileData();
       }
     });

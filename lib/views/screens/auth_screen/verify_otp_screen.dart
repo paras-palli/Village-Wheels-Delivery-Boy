@@ -11,6 +11,7 @@ import 'package:village_wheels_delivery_boy/views/base/custom_image.dart';
 import 'package:village_wheels_delivery_boy/views/base/custom_toast.dart';
 import '../../../controllers/auth_controller/auth_controller.dart';
 import '../../../../services/route_helper.dart';
+import '../dashboard_screen/dashboard_screen.dart';
 import 'components/profile_under_review_screen.dart';
 import 'components/resend_otp_widget.dart';
 import 'signup_screen/signup_screen.dart';
