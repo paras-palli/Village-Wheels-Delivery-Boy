@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:village_wheels_delivery_boy/services/theme.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:village_wheels_delivery_boy/controllers/dashboard_controller.dart';
+import 'package:village_wheels_delivery_boy/generated/assets.dart';
 
-import 'components/current_order_widget.dart';
-import 'components/dashboard_widget.dart';
-import 'components/drawer_widget.dart';
+import '../home_screen/home_screen.dart';
+import 'components/bottom_widget.dart';
+import 'components/drawer/drawer_widget.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -37,69 +39,55 @@ class DashboardScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: SafeArea(
-        child: RefreshIndicator(
-          backgroundColor: primaryColor,
-          color: Colors.white,
-          onRefresh: () async {
-            await Future.delayed(const Duration(seconds: 2));
-          },
-          child: SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // ---------- DashBoard ---------
-                      const DashboardWidget(),
+      body: GetBuilder<DashBoardController>(
+        initState: (_) {
 
-                      // ------ Shop Closed ----------
-                      const SizedBox(height: 16),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              "Current Orders",
-                              style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                            decoration: BoxDecoration(
-                              color: const Color(0xffF5F5F5),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Text(
-                              "3 Orders",
-                              style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                                color: Color(0xff292D32),
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      const SizedBox(height: 16),
-                      const CurrentOrderWidget(),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+        },
+        builder: (controller) {
+          return [
+            const HomeScreen(),
+            const HomeScreen(),
+          ][controller.dashPage];
+        },
       ),
-      bottomNavigationBar: const SizedBox(height: 20),
+      bottomNavigationBar: GetBuilder<DashBoardController>(
+        builder: (DashBoardController controller) {
+          return BottomAppBar(
+            surfaceTintColor: Colors.white,
+            padding: EdgeInsets.zero,
+            height: 65,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white, boxShadow: [
+                  BoxShadow(
+                    blurRadius: 3.5,
+                    spreadRadius: 1.5,
+                    color: Colors.grey.withValues(alpha: .4),
+                    offset: const Offset(1, 0),
+                  ),
+                ],
+              ),
+              child: Row(
+                children: [
+                  BottomWidget(
+                    title: 'Home',
+                    icon: Assets.svgsHome,
+                    isActive: controller.dashPage == 0,
+                    onTap: () => controller.dashPage = 0,
+                  ),
+
+                  BottomWidget(
+                    title: 'Orders',
+                    icon: Assets.svgsOrders,
+                    isActive: controller.dashPage == 1,
+                    onTap: () => controller.dashPage = 1,
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }

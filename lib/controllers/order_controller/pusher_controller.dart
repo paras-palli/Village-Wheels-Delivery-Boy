@@ -73,7 +73,7 @@ class PusherController extends GetxController implements GetxService {
       audioPlayer
         ..setAudioSource(
           LoopingAudioSource(
-            child: AudioSource.asset(Assets.soundNotificationRinging),
+            child: AudioSource.asset(Assets.soundsNotificationRinging),
             count: 4,
           ),
         )

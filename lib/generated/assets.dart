@@ -27,7 +27,7 @@ class Assets {
   static const String lottiesNoInternet = 'assets/lotties/no_internet.json';
   static const String lottiesNoSearch = 'assets/lotties/no_search.json';
   static const String lottiesSuccess = 'assets/lotties/success.json';
-  static const String soundNotificationRinging = 'assets/sound/notification_ringing.mp3';
+  static const String soundsNotificationRinging = 'assets/sounds/notification_ringing.mp3';
   static const String svgsClock = 'assets/svgs/clock.svg';
   static const String svgsCoins = 'assets/svgs/coins.svg';
   static const String svgsDelete = 'assets/svgs/delete.svg';
@@ -40,12 +40,14 @@ class Assets {
   static const String svgsFrame5 = 'assets/svgs/Frame-5.svg';
   static const String svgsFrame6 = 'assets/svgs/Frame-6.svg';
   static const String svgsGym = 'assets/svgs/gym.svg';
+  static const String svgsHome = 'assets/svgs/home.svg';
   static const String svgsInfoCircle = 'assets/svgs/info-circle.svg';
   static const String svgsKyc = 'assets/svgs/kyc.svg';
   static const String svgsLogin = 'assets/svgs/login.svg';
   static const String svgsLogout = 'assets/svgs/logout.svg';
   static const String svgsMessages = 'assets/svgs/messages.svg';
   static const String svgsNotification = 'assets/svgs/notification.svg';
+  static const String svgsOrders = 'assets/svgs/orders.svg';
   static const String svgsSearch = 'assets/svgs/search.svg';
   static const String svgsShare = 'assets/svgs/share.svg';
   static const String svgsSort = 'assets/svgs/sort.svg';

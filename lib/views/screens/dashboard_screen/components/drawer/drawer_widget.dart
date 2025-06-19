@@ -11,9 +11,9 @@ import 'package:village_wheels_delivery_boy/views/base/custom_image.dart';
 import 'package:village_wheels_delivery_boy/views/base/custom_toast.dart';
 import 'package:village_wheels_delivery_boy/views/base/dialogs/delete_dialogue.dart';
 import 'package:village_wheels_delivery_boy/views/base/dialogs/logout_dialog.dart';
+import 'package:village_wheels_delivery_boy/views/screens/auth_screen/signup_screen/signup_screen.dart';
 import 'package:village_wheels_delivery_boy/views/screens/splash_screen/splash_screen.dart';
 
-import '../../auth_screen/signup_screen/signup_screen.dart';
 import 'drawer_item_widget.dart';
 
 class DrawerScreens extends StatelessWidget {
