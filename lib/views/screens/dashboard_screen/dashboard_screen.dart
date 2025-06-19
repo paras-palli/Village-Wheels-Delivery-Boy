@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:village_wheels_delivery_boy/generated/assets.dart';
 import 'package:village_wheels_delivery_boy/services/theme.dart';
 
+import 'components/current_order_widget.dart';
 import 'components/dashboard_widget.dart';
 import 'components/drawer_widget.dart';
 
@@ -49,10 +49,8 @@ class DashboardScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Divider(color: Colors.grey[200]),
                 Padding(
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -60,13 +58,39 @@ class DashboardScreen extends StatelessWidget {
                       const DashboardWidget(),
 
                       // ------ Shop Closed ----------
-                      const SizedBox(height: 25),
-                      // const ShopClosedButtonWidget(),
-                      // --------- Orders ----------
-                      // OrderWidget(size: size),
-                      // ------- Order Bucket Grid --------
-                      const SizedBox(height: 6),
-                      // const OrderBucketScreen(),
+                      const SizedBox(height: 16),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              "Current Orders",
+                              style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                            decoration: BoxDecoration(
+                              color: const Color(0xffF5F5F5),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Text(
+                              "3 Orders",
+                              style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                                color: Color(0xff292D32),
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      const SizedBox(height: 16),
+                      const CurrentOrderWidget(),
                     ],
                   ),
                 ),

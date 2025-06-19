@@ -63,6 +63,8 @@ dependencies:
   connectivity_plus: ^6.0.3
   sms_autofill: ^2.4.1
   flutter_html: ^3.0.0-beta.2
+  just_audio: ^0.9.42
+  pusher_channels_flutter: ^2.5.0
 
 dev_dependencies:
   flutter_test:
@@ -86,6 +88,7 @@ flutter:
     - assets/images/
     - assets/lotties/
     - assets/svgs/
+    - assets/sounds/
 
 flutter_assets:
   assets_path: assets/

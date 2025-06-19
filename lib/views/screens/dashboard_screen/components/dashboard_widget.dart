@@ -17,10 +17,10 @@ class DashboardWidget extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(6),
-            border: Border.all(color: Colors.green, width: 2),
+            border: Border.all(color: green, width: 2),
             boxShadow: [
               BoxShadow(
-                color: Colors.green.withOpacity(.25),
+                color: green.withOpacity(.25),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),
@@ -35,7 +35,7 @@ class DashboardWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Today’s Business',
+                        'Today’s Revenue',
                         style: Theme.of(context).textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.w700,
                           fontSize: 18,
@@ -47,7 +47,7 @@ class DashboardWidget extends StatelessWidget {
                         'INR ${PriceConverter.convertToNumberFormat(152)}',
                         style: Theme.of(context).textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.w700,
-                          color: false ? Colors.red : Colors.green,
+                          color: false ? Colors.red : green,
                           fontSize: 26,
                         ),
                       ),
@@ -72,7 +72,7 @@ class DashboardWidget extends StatelessWidget {
                                     text: PriceConverter.convertToNumberFormat(55.2),
                                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
                                       fontWeight: FontWeight.w600,
-                                      color: Colors.green,
+                                      color: green,
                                       fontSize: 11,
                                     ),
                                   )
@@ -99,7 +99,7 @@ class DashboardWidget extends StatelessWidget {
                                     text: PriceConverter.convertToNumberFormat(150),
                                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
                                       fontWeight: FontWeight.w600,
-                                      color: Colors.green,
+                                      color: green,
                                       fontSize: 11,
                                     ),
                                   )
@@ -143,7 +143,7 @@ class DashboardWidget extends StatelessWidget {
                         '10',
                         style: Theme.of(context).textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.w700,
-                          color: Colors.green,
+                          color: green,
                           fontSize: 30,
                         ),
                       ),
@@ -174,7 +174,7 @@ class DashboardWidget extends StatelessWidget {
                               text: 'INR 500',
                               style: Theme.of(context).textTheme.titleSmall?.copyWith(
                                 fontWeight: FontWeight.w600,
-                                color: false ? Colors.red : Colors.green,
+                                color: false ? Colors.red : green,
                                 fontSize: 13,
                               ),
                             )
@@ -187,7 +187,7 @@ class DashboardWidget extends StatelessWidget {
                       'View details',
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
                         fontSize: 13,
-                        color: Colors.deepOrangeAccent,
+                        color: Colors.orange,
                         fontWeight: FontWeight.w600,
                       ),
                     ),

@@ -14,6 +14,7 @@ class Assets {
   static const String imagesLocationAccess = 'assets/images/location_access.png';
   static const String imagesLogin = 'assets/images/login.png';
   static const String imagesMedicine = 'assets/images/medicine.png';
+  static const String imagesMilk = 'assets/images/milk.png';
   static const String imagesOtpLogin = 'assets/images/otp-login.png';
   static const String imagesPersonaldetail = 'assets/images/personaldetail.png';
   static const String imagesPlaceholder = 'assets/images/placeholder.jpg';
@@ -26,6 +27,7 @@ class Assets {
   static const String lottiesNoInternet = 'assets/lotties/no_internet.json';
   static const String lottiesNoSearch = 'assets/lotties/no_search.json';
   static const String lottiesSuccess = 'assets/lotties/success.json';
+  static const String soundNotificationRinging = 'assets/sound/notification_ringing.mp3';
   static const String svgsClock = 'assets/svgs/clock.svg';
   static const String svgsCoins = 'assets/svgs/coins.svg';
   static const String svgsDelete = 'assets/svgs/delete.svg';
