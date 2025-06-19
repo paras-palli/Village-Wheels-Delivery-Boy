@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -15,6 +16,10 @@ class AuthController extends GetxController implements GetxService {
 
   bool isLoading = false;
   UserModel? userModel;
+
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController otpController = TextEditingController();
+
 
   Future<ResponseModel> generatedOtp({required Map<String, dynamic> data}) async {
     log('----------- generatedOtp Called ----------');

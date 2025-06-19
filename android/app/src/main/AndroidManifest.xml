@@ -3,6 +3,9 @@
         android:label="village_wheels_delivery_boy"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCPMgv3duvS967kagdXKvcn0eD72L3sdF4" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -44,8 +44,11 @@ class _ChooseLocationScreenState extends State<ChooseLocationScreen> {
       final GoogleMapController controller = await _controller.future;
       LatLngBounds visibleRegion = await controller.getVisibleRegion();
       LatLng centerLatLng = LatLng(
-        (visibleRegion.northeast.latitude + visibleRegion.southwest.latitude) / 2,
-        (visibleRegion.northeast.longitude + visibleRegion.southwest.longitude) / 2,
+        (visibleRegion.northeast.latitude + visibleRegion.southwest.latitude) /
+            2,
+        (visibleRegion.northeast.longitude +
+                visibleRegion.southwest.longitude) /
+            2,
       );
 
       return centerLatLng;
@@ -69,6 +72,8 @@ class _ChooseLocationScreenState extends State<ChooseLocationScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(color: Colors.black),
           title: Text(
             'Confirm location',
             style: Theme.of(context).textTheme.labelMedium!.copyWith(
@@ -124,7 +129,8 @@ class _ChooseLocationScreenState extends State<ChooseLocationScreen> {
                         if (value != null) {
                           location.chooseCurrentLatlog(value);
                           log('${location.latLng}');
-                          location.getAddressFromLocation(LatLng(value.latitude, value.longitude));
+                          location.getAddressFromLocation(
+                              LatLng(value.latitude, value.longitude));
                         }
                         return value;
                       });
@@ -144,11 +150,15 @@ class _ChooseLocationScreenState extends State<ChooseLocationScreen> {
                     right: 0,
                     child: GestureDetector(
                       onTap: () async {
-                        final LatLng latLng = await Navigator.of(context).push(getCustomRoute(child: const SearchedLoactionScreen()));
+                        final LatLng latLng = await Navigator.of(context).push(
+                            getCustomRoute(
+                                child: const SearchedLoactionScreen()));
                         location.chooseCurrentLatlog(latLng);
-                        location.getAddressFromLocation(LatLng(latLng.latitude, latLng.longitude));
+                        location.getAddressFromLocation(
+                            LatLng(latLng.latitude, latLng.longitude));
                         mapCon?.animateCamera(
-                          CameraUpdate.newLatLngZoom(LatLng(latLng.latitude, latLng.longitude), 15),
+                          CameraUpdate.newLatLngZoom(
+                              LatLng(latLng.latitude, latLng.longitude), 15),
                         );
                       },
                       child: Padding(
@@ -205,7 +215,8 @@ Future<Position> determinePosition() async {
     }
   }
   if (permission == LocationPermission.deniedForever) {
-    return Future.error('Location permissions are permanently denied, we cannot request permissions.');
+    return Future.error(
+        'Location permissions are permanently denied, we cannot request permissions.');
   }
   return await Geolocator.getCurrentPosition();
 }
@@ -293,7 +304,9 @@ class LocConfirmBtnText extends StatelessWidget {
                   location.getAddressFromLocation(currentCenter);
                   Navigator.pop(navigatorKey.currentContext!, currentCenter);
                 } else {
-                  showCustomToast(msg: "Please select a valid location", toastType: ToastType.warning);
+                  showCustomToast(
+                      msg: "Please select a valid location",
+                      toastType: ToastType.warning);
                 }
               },
             ),

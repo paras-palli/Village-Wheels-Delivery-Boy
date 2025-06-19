@@ -13,6 +13,8 @@ class ShowImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
+          iconTheme: const IconThemeData(color: Colors.black),
           title: const Text('Image'),
         ),
         body: Padding(

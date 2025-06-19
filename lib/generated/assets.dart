@@ -2,16 +2,30 @@
 class Assets {
   Assets._();
 
+  static const String fontsLatoRegular = 'assets/fonts/Lato-Regular.ttf';
+  static const String fontsPoppinsBlack = 'assets/fonts/Poppins-Black.ttf';
+  static const String fontsPoppinsBold = 'assets/fonts/Poppins-Bold.ttf';
+  static const String fontsPoppinsExtraBold = 'assets/fonts/Poppins-ExtraBold.ttf';
+  static const String fontsPoppinsExtraLight = 'assets/fonts/Poppins-ExtraLight.ttf';
+  static const String fontsPoppinsLight = 'assets/fonts/Poppins-Light.ttf';
+  static const String fontsPoppinsMedium = 'assets/fonts/Poppins-Medium.ttf';
+  static const String fontsPoppinsRegular = 'assets/fonts/Poppins-Regular.ttf';
+  static const String fontsPoppinsSemiBold = 'assets/fonts/Poppins-SemiBold.ttf';
+  static const String gifsReviewDoc = 'assets/gifs/review_doc.gif';
   static const String imagesAddress = 'assets/images/address.png';
+  static const String imagesAddressDetials = 'assets/images/address_detials.png';
   static const String imagesAppLogo = 'assets/images/app_logo.png';
   static const String imagesBank = 'assets/images/Bank.png';
+  static const String imagesBankDetials = 'assets/images/bank_detials.png';
   static const String imagesCongrats = 'assets/images/congrats.png';
   static const String imagesDaal = 'assets/images/daal.png';
   static const String imagesDelete = 'assets/images/delete.png';
+  static const String imagesDeliveryAgent = 'assets/images/delivery_agent.png';
   static const String imagesDocument = 'assets/images/document.gif';
   static const String imagesExclaim = 'assets/images/exclaim.png';
   static const String imagesFreshmart = 'assets/images/freshmart.png';
   static const String imagesGrocery = 'assets/images/grocery.png';
+  static const String imagesKycDetails = 'assets/images/kyc_details.png';
   static const String imagesLocationAccess = 'assets/images/location_access.png';
   static const String imagesLogin = 'assets/images/login.png';
   static const String imagesMedicine = 'assets/images/medicine.png';
@@ -20,9 +34,13 @@ class Assets {
   static const String imagesPersonaldetail = 'assets/images/personaldetail.png';
   static const String imagesPlaceholder = 'assets/images/placeholder.jpg';
   static const String imagesProfileUnderReview = 'assets/images/profile_under_review.png';
+  static const String imagesRegistrationFailure = 'assets/images/registration_failure.png';
+  static const String imagesRegistrationSuccess = 'assets/images/registration_success.png';
   static const String imagesRestront = 'assets/images/restront.png';
   static const String imagesShimmer = 'assets/images/shimmer.gif';
-  static const String imagesSplash = 'assets/images/splash.png';
+  static const String imagesSplash = 'assets/images/splash.jpg';
+  static const String imagesStar = 'assets/images/star.png';
+  static const String imagesVehichelInfo = 'assets/images/vehichel_info.png';
   static const String lottiesCheck = 'assets/lotties/check.json';
   static const String lottiesLocationFinding = 'assets/lotties/location_finding.json';
   static const String lottiesNoInternet = 'assets/lotties/no_internet.json';

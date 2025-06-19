@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -11,10 +10,9 @@ import 'package:village_wheels_delivery_boy/services/route_helper.dart';
 import 'package:village_wheels_delivery_boy/views/base/dialogs/maintenance_dialog.dart';
 import 'package:village_wheels_delivery_boy/views/base/dialogs/update_dialog.dart';
 import 'package:village_wheels_delivery_boy/views/screens/auth_screen/components/profile_under_review_screen.dart';
-import 'package:village_wheels_delivery_boy/views/screens/auth_screen/login_screen.dart';
 import 'package:village_wheels_delivery_boy/views/screens/auth_screen/signup_screen/signup_screen.dart';
 import 'package:village_wheels_delivery_boy/views/screens/dashboard_screen/dashboard_screen.dart';
-
+import 'package:village_wheels_delivery_boy/views/screens/splash_screen/components/login_bottom_sheet.dart';
 import '../../base/custom_image.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -29,25 +27,40 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-
       Get.find<BasicController>().fetchSettings().then((value) async {
         if (value.isSuccess) {
           PackageInfo packageInfo = await PackageInfo.fromPlatform();
-
           var setting = Get.find<BasicController>();
-          if (setting.getAppLinkAndAppVersion('user_android_maintenance_mode') != null && setting.getAppLinkAndAppVersion('user_android_maintenance_mode') == '1') {
+          if (setting.getAppLinkAndAppVersion(
+                      'user_android_maintenance_mode') !=
+                  null &&
+              setting.getAppLinkAndAppVersion(
+                      'user_android_maintenance_mode') ==
+                  '1') {
             if (!mounted) return;
             showDialog(
               barrierDismissible: false,
               context: context,
               builder: (context) => const MaintenanceDialog(),
             );
-          } else if (int.parse(packageInfo.buildNumber) < int.parse(setting.getAppLinkAndAppVersion('user_app_version') ?? '0')) {
+          } else if (int.parse(packageInfo.buildNumber) <
+              int.parse(
+                  setting.getAppLinkAndAppVersion('user_app_version') ?? '0')) {
             bool isSkippable = Platform.isAndroid
-                ? (((setting.getAppLinkAndAppVersion('user_force_update_android') != null &&
-                  setting.getAppLinkAndAppVersion('user_force_update_android') == '0')) ? true : false)
-                : (((setting.getAppLinkAndAppVersion('force_update_ios') != null &&
-                  setting.getAppLinkAndAppVersion('force_update_ios') == '0')) ? true : false);
+                ? (((setting.getAppLinkAndAppVersion(
+                                'user_force_update_android') !=
+                            null &&
+                        setting.getAppLinkAndAppVersion(
+                                'user_force_update_android') ==
+                            '0'))
+                    ? true
+                    : false)
+                : (((setting.getAppLinkAndAppVersion('force_update_ios') !=
+                            null &&
+                        setting.getAppLinkAndAppVersion('force_update_ios') ==
+                            '0'))
+                    ? true
+                    : false);
 
             if (!mounted) return;
             showDialog(
@@ -77,39 +90,60 @@ class _SplashScreenState extends State<SplashScreen> {
         if (value.isSuccess) {
           if (auth.userModel?.name == null) {
             Get.find<RegisterController>().loadSignUpData();
-            Navigator.of(context).pushAndRemoveUntil(getCustomRoute(child: const SignupScreen()), (route) => false);
+            Navigator.of(context).pushAndRemoveUntil(
+                getCustomRoute(child: const SignupScreen()), (route) => false);
             return;
           }
           if (auth.userModel?.status == 'pending') {
-            Navigator.of(context).pushAndRemoveUntil(getCustomRoute(child: const ProfileUnderReviewScreen()), (route) => false);
+            Navigator.of(context).pushAndRemoveUntil(
+                getCustomRoute(child: const ProfileUnderReviewScreen()),
+                (route) => false);
             return;
           }
-          if ((auth.userModel?.name).isValid && (auth.userModel?.phone).isPhone) {
-            Navigator.of(context).pushAndRemoveUntil(getCustomRoute(child: const DashboardScreen()), (route) => false);
+          if ((auth.userModel?.name).isValid &&
+              (auth.userModel?.phone).isPhone) {
+            Navigator.of(context).pushAndRemoveUntil(
+                getCustomRoute(child: const DashboardScreen()),
+                (route) => false);
           } else {
-            Navigator.of(context).pushAndRemoveUntil(getCustomRoute(child: const SignupScreen()), (route) => false);
+            Navigator.of(context).pushAndRemoveUntil(
+                getCustomRoute(child: const SignupScreen()), (route) => false);
           }
         } else {
-          Navigator.of(context).pushAndRemoveUntil(getCustomRoute(child: const LoginScreen()), (route) => false);
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return Container();
+            },
+          );
+          // Navigator.of(context).pushAndRemoveUntil(getCustomRoute(child: const LoginScreen()), (route) => false);
         }
       });
     } else {
-      Navigator.of(context).pushAndRemoveUntil(
-          getCustomRoute(child: const LoginScreen()), (route) => false);
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        isDismissible: false,
+        enableDrag: false,
+        backgroundColor: Colors.white,
+        builder: (context) {
+          return const LoginBottomSheet();
+        },
+      );
+
+
+      // Navigator.of(context).pushAndRemoveUntil(
+      //     getCustomRoute(child: const LoginScreen()), (route) => false);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Color(0xFF242223),
-      body: Center(
-        child: CustomImage(
-          width: 200,
-          height: 200,
-          path: Assets.imagesAppLogo,
-          fit: BoxFit.cover,
-        ),
+    return Scaffold(
+      body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(Assets.imagesSplash), fit: BoxFit.cover)),
       ),
     );
   }

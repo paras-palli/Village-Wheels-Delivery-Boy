@@ -7,6 +7,7 @@ import 'package:village_wheels_delivery_boy/controllers/auth_controller/register
 import 'package:village_wheels_delivery_boy/controllers/basic_controller.dart';
 import 'package:village_wheels_delivery_boy/services/extensions.dart';
 import 'package:village_wheels_delivery_boy/views/base/custom_toast.dart';
+import 'package:village_wheels_delivery_boy/views/screens/auth_screen/verification_screen/driver_verification_screen.dart';
 import 'package:village_wheels_delivery_boy/views/screens/dashboard_screen/dashboard_screen.dart';
 
 import '../../../../controllers/auth_controller/auth_controller.dart';
@@ -15,10 +16,10 @@ import '../../../../services/route_helper.dart';
 import '../../../base/common_button.dart';
 import '../components/profile_under_review_screen.dart';
 import 'components/signup_page_five.dart';
+import 'components/signup_page_four.dart';
 import 'components/signup_page_one.dart';
 import 'components/signup_page_three.dart';
 import 'components/signup_page_two.dart';
-import 'signup_four_screen/signup_page_four.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key, this.isFrmProfile = false});
@@ -35,7 +36,7 @@ class _SignupScreenState extends State<SignupScreen> {
     const SignupPageOne(),
     const SignUpPageTwo(),
     const SignupPageThree(),
-    SignupPageFour(),
+    const SignupPageFour(),
     const SignUpPageFive(),
   ];
   int selectedIndex = 0;
@@ -47,14 +48,19 @@ class _SignupScreenState extends State<SignupScreen> {
       final BasicController basicController = Get.find<BasicController>();
       if (basicController.states.isEmpty) {
         final statesResponse = await basicController.fetchStates();
-        if (!statesResponse.isSuccess) showCustomToast(msg: statesResponse.message, toastType: ToastType.warning);
+        if (!statesResponse.isSuccess) {
+          showCustomToast(
+              msg: statesResponse.message, toastType: ToastType.warning);
+        }
       }
 
-      final RegisterController registerController = Get.find<RegisterController>();
+      final RegisterController registerController =
+          Get.find<RegisterController>();
       if (widget.isFrmProfile) {
         registerController.prefillProfileData();
       } else {
-        registerController.phone.text = (Get.find<AuthController>().userModel?.phone).getIfValid;
+        registerController.phone.text =
+            (Get.find<AuthController>().userModel?.phone).getIfValid;
       }
     });
   }
@@ -85,86 +91,92 @@ class _SignupScreenState extends State<SignupScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      for (int i = 0; i < signupPages.length; i++)
-                        Expanded(
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Container(
-                                      color: selectedIndex < i
-                                          ? const Color(0xFFE6ECF5)
-                                          : const Color(0xFF233A7D),
-                                      height: 8,
-                                    ),
+                    children: List.generate(signupPages.length, (i) {
+                      return Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  width: 48,
+                                  height: 48,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                        color: selectedIndex < i
+                                            ? const Color(0xFFE6ECF5)
+                                            : const Color(0xFF233A7D),
+                                        width: 4),
                                   ),
-                                  Container(
-                                    width: 45,
-                                    height: 40,
-                                    decoration: const BoxDecoration(
-                                      color: Color(0xFFE6ECF5),
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Center(
-                                      child: Container(
-                                        width: 30,
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: selectedIndex < i
-                                              ? Colors.white
-                                              : const Color(0xFF233A7D),
-                                        ),
-                                        child: Center(
-                                          child: selectedIndex > i
-                                              ? const Icon(
-                                                  Icons.check,
-                                                  color: Colors.white,
-                                                )
-                                              : Text(
-                                                  '${i + 1}',
-                                                  style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                                                    fontSize: 15,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: selectedIndex < i ? const Color(0xFF233A7D) : Colors.white,
-                                                  ),
+                                  child: Center(
+                                    child: Container(
+                                      width: 33,
+                                      height: 33,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: selectedIndex == i
+                                            ? const Color(0xFF233A7D)
+                                            : selectedIndex > i
+                                                ? const Color(0xFF233A7D)
+                                                : Colors.white,
+                                      ),
+                                      child: Center(
+                                        child: selectedIndex > i
+                                            ? const Icon(Icons.check,
+                                                color: Colors.white, size: 18)
+                                            : Text(
+                                                '${i + 1}',
+                                                style: TextStyle(
+                                                  color: selectedIndex == i
+                                                      ? Colors.white
+                                                      : const Color(0xFF233A7D),
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.w500,
                                                 ),
-                                        ),
+                                              ),
                                       ),
                                     ),
                                   ),
+                                ),
+                                if (i != signupPages.length - 1)
                                   Expanded(
                                     child: Container(
+                                      height: 4,
                                       color: selectedIndex < i
                                           ? const Color(0xFFE6ECF5)
                                           : const Color(0xFF233A7D),
-                                      height: 8,
                                     ),
                                   ),
-                                ],
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                [
-                                  'Personal',
-                                  'Business',
-                                  'Address',
-                                  'KYC',
-                                  'Bank'
-                                ][i],
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w200,
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ],
-                          ),
+                              ],
+                            ),
+                            const SizedBox(height: 8),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left: i == 2 || i == 4
+                                      ? 15.0
+                                      : i != 0
+                                          ? 4.0
+                                          : 0),
+                              child: Text(
+                                  [
+                                    'Agent Details',
+                                    'Address',
+                                    'KYC',
+                                    'Vehicle Info',
+                                    'Bank'
+                                  ][i],
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelSmall
+                                      ?.copyWith(fontSize: 9)),
+                            ),
+                          ],
                         ),
-                    ],
+                      );
+                    }),
                   ),
                 ),
                 const SizedBox(height: 50),
@@ -210,30 +222,41 @@ class _SignupScreenState extends State<SignupScreen> {
                             radius: 8,
                             isLoading: controller.isLoading,
                             onTap: () {
-                              final LocationController locationCtrl = Get.find<LocationController>();
-                              if (formkey.currentState!.validate()) {
-                                if (selectedIndex < signupPages.length - 1) {
-                                  if (selectedIndex == 1 && controller.selectedBussiness.isEmpty) {
-                                    showCustomToast(msg: "Please select a bussiness", toastType: ToastType.info);
-                                    return;
-                                  }
-                                  if (selectedIndex == 2 && locationCtrl.latLng == null) {
-                                    showCustomToast(msg: "Please select a location on the map", toastType: ToastType.info);
-                                    return;
-                                  }
-
-                                  selectedIndex++;
-                                  setState(() {});
-                                  controller.saveSignupData(
-                                      index: selectedIndex);
-                                } else {
-                                  if (widget.isFrmProfile) {
-                                    updateProfile(controller);
-                                  } else {
-                                    signupUser(controller);
-                                  }
-                                }
-                              }
+                              // Get.find<LocationController>();
+                              // if (formkey.currentState!.validate()) {
+                              //   if (selectedIndex < signupPages.length - 1) {
+                              //     // if (selectedIndex == 1 &&
+                              //     //     controller.selectedBussiness.isEmpty) {
+                              //     //   showCustomToast(
+                              //     //       msg: "Please select a bussiness",
+                              //     //       toastType: ToastType.info);
+                              //     //   return;
+                              //     // }
+                              //     // if (selectedIndex == 2 &&
+                              //     //     locationCtrl.latLng == null) {
+                              //     //   showCustomToast(
+                              //     //       msg:
+                              //     //           "Please select a location on the map",
+                              //     //       toastType: ToastType.info);
+                              //     //   return;
+                              //     // }
+                              //
+                              //     selectedIndex++;
+                              //     setState(() {});
+                              //     controller.saveSignupData(
+                              //         index: selectedIndex);
+                              //   } else {
+                              //     if (widget.isFrmProfile) {
+                              //       updateProfile(controller);
+                              //     } else {
+                              //       signupUser(controller);
+                              //     }
+                              //   }
+                              // }
+                              Navigator.push(
+                                  context,
+                                  getCustomRoute(
+                                      child: DriverVerificationScreen()));
                             },
                             child: Text(
                               selectedIndex >= 3 ? "Next" : "Next",
@@ -268,10 +291,16 @@ class _SignupScreenState extends State<SignupScreen> {
         final auth = Get.find<AuthController>();
         auth.getUserProfileData().then((value) {
           if (value.isSuccess) {
+            if (!mounted) return;
+
             if (auth.userModel?.status == 'active') {
-              Navigator.of(context).pushAndRemoveUntil(getCustomRoute(child: const DashboardScreen()), (route) => false);
+              Navigator.of(context).pushAndRemoveUntil(
+                  getCustomRoute(child: const DashboardScreen()),
+                  (route) => false);
             } else {
-              Navigator.of(context).pushAndRemoveUntil(getCustomRoute(child: const ProfileUnderReviewScreen()), (route) => false);
+              Navigator.of(context).pushAndRemoveUntil(
+                  getCustomRoute(child: const ProfileUnderReviewScreen()),
+                  (route) => false);
             }
           }
         });

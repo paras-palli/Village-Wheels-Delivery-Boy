@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:village_wheels_delivery_boy/generated/assets.dart';
 import 'package:village_wheels_delivery_boy/services/theme.dart';
 
-import '../sub_screens/delivered_screens/components/order_id_components.dart';
 import '../sub_screens/ongoing_screens/components/stepper_widget.dart';
 import 'components/button_widget.dart';
 import 'components/delivery_person_name.dart';
@@ -60,9 +59,39 @@ class OrderDetailScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 20),
-              const OrderIdComponents(
-                color: Color(0xffFFB937),
-                text: "Pending",
+              Row(
+                children: [
+                  SvgPicture.asset(
+                    Assets.svgsOrders,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      "Order Id: 1234567890",
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+                    decoration: BoxDecoration(
+                      color: const Color(0xffE49A23),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      "On Going",
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  )
+                ],
               ),
               const SizedBox(height: 10),
               Text(
@@ -96,7 +125,7 @@ class OrderDetailScreen extends StatelessWidget {
                     ),
               ),
               const SizedBox(height: 10),
-              const onlinePaymentWidget(),
+              const OnlinePaymentWidget(),
               const SizedBox(height: 20),
               Text(
                 "Delivery Person Details",

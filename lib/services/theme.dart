@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-Color primaryColor = const Color.fromARGB(255, 2, 106, 190);
-Color secondaryColor = const Color(0xFFE4DC75);
+Color primaryColor = const Color(0xFF1E3A8A);
+Color secondaryColor = const Color(0xFFF97316);
 Color backgroundDark = const Color(0xff231F20);
 Color backgroundLight = const Color(0xffffffff);
 Color greyLight = const Color(0xffD9D9D9);
@@ -38,7 +37,7 @@ class CustomTheme {
     primarySwatch: colorCustom,
     canvasColor: secondaryColor,
     primaryColorLight: secondaryColor,
-    splashColor: secondaryColor,
+    splashColor: Colors.grey.withValues(alpha: 0.2),
     shadowColor: Colors.grey[600],
     cardColor: Colors.grey[100],
     primaryColor: primaryColor,
@@ -52,8 +51,8 @@ class CustomTheme {
       onSecondary: Colors.black,
       error: const Color(0xFFCF6679),
       onError: const Color(0xFFCF6679),
-      background: backgroundLight,
-      onBackground: Colors.black,
+      // background: backgroundLight,
+      // onBackground: Colors.black,
       surface: backgroundLight,
       onSurface: Colors.black,
     ),
@@ -75,45 +74,65 @@ class CustomTheme {
       ),
     ),
     typography: Typography.material2021(),
+    // textTheme: const TextTheme(
+    //   labelLarge: TextStyle(
+    //     fontWeight: FontWeight.w400,
+    //     color: textSecondary,
+    //     fontSize: 18.0,
+    //   ),
+    //   labelMedium: TextStyle(
+    //     fontWeight: FontWeight.w400,
+    //     color: textSecondary,
+    //     fontSize: 16.0,
+    //   ),
+    //   labelSmall: TextStyle(
+    //     fontWeight: FontWeight.w400,
+    //     color: textSecondary,
+    //     fontSize: 14.0,
+    //   ),
+    //   headlineLarge: TextStyle(
+    //     fontWeight: FontWeight.w600,
+    //     color: textSecondary,
+    //     fontSize: 18.0,
+    //   ),
+    //   headlineMedium: TextStyle(
+    //     fontWeight: FontWeight.w500,
+    //     color: textSecondary,
+    //     fontSize: 16.0,
+    //   ),
+    //   displayLarge: TextStyle(
+    //     fontSize: 27,
+    //     fontWeight: FontWeight.w600,
+    //   ),
+    //   displayMedium: TextStyle(
+    //     fontSize: 20,
+    //     fontWeight: FontWeight.w500,
+    //   ),
+    //   displaySmall: TextStyle(
+    //     fontSize: 12,
+    //     fontWeight: FontWeight.w400,
+    //   ),
+    // ),
+
     textTheme: const TextTheme(
       labelLarge: TextStyle(
-        fontWeight: FontWeight.w400,
-        color: textSecondary,
-        fontSize: 18.0,
-      ),
-      labelMedium: TextStyle(
-        fontWeight: FontWeight.w400,
-        color: textSecondary,
-        fontSize: 16.0,
-      ),
-      labelSmall: TextStyle(
-        fontWeight: FontWeight.w400,
-        color: textSecondary,
-        fontSize: 14.0,
-      ),
-      headlineLarge: TextStyle(
-        fontWeight: FontWeight.w600,
-        color: textSecondary,
-        fontSize: 18.0,
-      ),
-      headlineMedium: TextStyle(
-        fontWeight: FontWeight.w500,
-        color: textSecondary,
-        fontSize: 16.0,
-      ),
-      displayLarge: TextStyle(
-        fontSize: 27,
-        fontWeight: FontWeight.w600,
-      ),
-      displayMedium: TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.w500,
-      ),
-      displaySmall: TextStyle(
-        fontSize: 12,
+        fontFamily: 'Poppins',
         fontWeight: FontWeight.w400,
       ),
+      headlineLarge: TextStyle(fontFamily: 'Poppins'),
+      headlineMedium: TextStyle(fontFamily: 'Poppins'),
+      headlineSmall: TextStyle(fontFamily: 'Poppins'),
+      displayLarge: TextStyle(fontFamily: 'Poppins'),
+      displayMedium: TextStyle(fontFamily: 'Poppins'),
+      displaySmall: TextStyle(fontFamily: 'Poppins'),
+      titleLarge: TextStyle(fontFamily: 'Poppins'),
+      titleMedium: TextStyle(fontFamily: 'Poppins'),
+      titleSmall: TextStyle(fontFamily: 'Poppins'),
+      bodyLarge: TextStyle(fontFamily: 'Poppins'),
+      bodyMedium: TextStyle(fontFamily: 'Poppins'),
+      bodySmall: TextStyle(fontFamily: 'Poppins'),
     ),
+
   );
   static ThemeData dark = ThemeData(
     brightness: Brightness.dark,
@@ -137,8 +156,8 @@ class CustomTheme {
       onSecondary: Colors.black,
       error: const Color(0xFFCF6679),
       onError: const Color(0xFFCF6679),
-      background: backgroundDark,
-      onBackground: Colors.white,
+      // background: backgroundDark,
+      // onBackground: Colors.white,
       surface: backgroundDark,
       onSurface: Colors.white,
     ),
@@ -159,24 +178,46 @@ class CustomTheme {
       ),
     ),
     typography: Typography.material2021(),
-    textTheme: TextTheme(
-      labelLarge: GoogleFonts.openSans(
+    // textTheme: TextTheme(
+    //   labelLarge: GoogleFonts.openSans(
+    //     fontWeight: FontWeight.w400,
+    //     color: textSecondary,
+    //     fontSize: 14.0,
+    //   ),
+    //   headlineLarge: GoogleFonts.openSans(),
+    //   headlineMedium: GoogleFonts.openSans(),
+    //   headlineSmall: GoogleFonts.openSans(),
+    //   displayLarge: GoogleFonts.openSans(),
+    //   displayMedium: GoogleFonts.openSans(),
+    //   displaySmall: GoogleFonts.openSans(),
+    //   titleLarge: GoogleFonts.openSans(),
+    //   titleMedium: GoogleFonts.openSans(),
+    //   titleSmall: GoogleFonts.openSans(),
+    //   bodyLarge: GoogleFonts.openSans(),
+    //   bodyMedium: GoogleFonts.openSans(),
+    //   bodySmall: GoogleFonts.openSans(),
+    // ),
+
+    textTheme: const TextTheme(
+      labelLarge: TextStyle(
+        fontFamily: 'Poppins',
         fontWeight: FontWeight.w400,
-        color: textSecondary,
         fontSize: 14.0,
+        color: textSecondary, // Ensure `textSecondary` is defined
       ),
-      headlineLarge: GoogleFonts.openSans(),
-      headlineMedium: GoogleFonts.openSans(),
-      headlineSmall: GoogleFonts.openSans(),
-      displayLarge: GoogleFonts.openSans(),
-      displayMedium: GoogleFonts.openSans(),
-      displaySmall: GoogleFonts.openSans(),
-      titleLarge: GoogleFonts.openSans(),
-      titleMedium: GoogleFonts.openSans(),
-      titleSmall: GoogleFonts.openSans(),
-      bodyLarge: GoogleFonts.openSans(),
-      bodyMedium: GoogleFonts.openSans(),
-      bodySmall: GoogleFonts.openSans(),
+      headlineLarge: TextStyle(fontFamily: 'Poppins'),
+      headlineMedium: TextStyle(fontFamily: 'Poppins'),
+      headlineSmall: TextStyle(fontFamily: 'Poppins'),
+      displayLarge: TextStyle(fontFamily: 'Poppins'),
+      displayMedium: TextStyle(fontFamily: 'Poppins'),
+      displaySmall: TextStyle(fontFamily: 'Poppins'),
+      titleLarge: TextStyle(fontFamily: 'Poppins'),
+      titleMedium: TextStyle(fontFamily: 'Poppins'),
+      titleSmall: TextStyle(fontFamily: 'Poppins'),
+      bodyLarge: TextStyle(fontFamily: 'Poppins'),
+      bodyMedium: TextStyle(fontFamily: 'Poppins'),
+      bodySmall: TextStyle(fontFamily: 'Poppins'),
     ),
+
   );
 }

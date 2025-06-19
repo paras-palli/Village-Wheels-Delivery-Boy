@@ -12,12 +12,12 @@ class CustomButton extends StatelessWidget {
     required this.onTap,
     this.disabledColor,
     this.color,
-    this.height = 45,
+    this.height = 50,
     this.isLoading = false,
-    this.radius = 6,
+
+    this.radius = 15,
     this.elevation = 0,
     this.fontSize = 16,
-    this.textStyle,
   })  : assert(title == null || child == null, 'Cannot provide both a title and a child\n'),
         super(key: key);
 
@@ -31,10 +31,9 @@ class CustomButton extends StatelessWidget {
     this.color,
     this.height = 45,
     this.isLoading = false,
-    this.radius = 6,
-    this.elevation = 0,
+    this.radius = 14,
+    this.elevation = 10,
     this.fontSize,
-    this.textStyle
   })  : assert(title == null || child == null, 'Cannot provide both a title and a child\n'),
         super(key: key);
 
@@ -69,8 +68,6 @@ class CustomButton extends StatelessWidget {
 
   final double? fontSize;
 
-  final TextStyle? textStyle;
-
   @override
   Widget build(BuildContext context) {
     if (type == ButtonType.primary) {
@@ -104,7 +101,7 @@ class CustomButton extends StatelessWidget {
                     child: Text(
                       title!,
                       textAlign: TextAlign.center,
-                      style: textStyle ?? GoogleFonts.montserrat(
+                      style: GoogleFonts.poppins(
                         color: Colors.white,
                         fontSize: fontSize,
                       ),
@@ -146,7 +143,7 @@ class CustomButton extends StatelessWidget {
                     child: Text(
                       title!,
                       textAlign: TextAlign.center,
-                      style: textStyle ?? GoogleFonts.montserrat(
+                      style: GoogleFonts.montserrat(
                         color: Theme.of(context).primaryColor,
                         fontSize: fontSize,
                       ),
@@ -175,9 +172,9 @@ class CustomButton extends StatelessWidget {
               child: Text(
                 title!,
                 textAlign: TextAlign.center,
-                style: textStyle ?? Theme.of(context).textTheme.labelLarge!.copyWith(
-                      fontSize: fontSize,
-                    ),
+                style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                  fontSize: fontSize,
+                ),
               ),
             );
           },

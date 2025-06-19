@@ -24,7 +24,8 @@ class LocationController extends GetxController implements GetxService {
       final SharedPreferences prefs = Get.find<SharedPreferences>();
       await prefs.setDouble('latitude', pickedLatLag.latitude);
       await prefs.setDouble('longitude', pickedLatLag.longitude);
-      log('Picked location saved to SharedPreferences: ${pickedLatLag.latitude}, ${pickedLatLag.longitude}', name: 'SharedPreferences');
+      log('Picked location saved to SharedPreferences: ${pickedLatLag.latitude}, ${pickedLatLag.longitude}',
+          name: 'SharedPreferences');
     }
     update();
   }
@@ -36,7 +37,8 @@ class LocationController extends GetxController implements GetxService {
     await prefs.remove('latitude');
     await prefs.remove('longitude');
     await prefs.remove('address');
-    log('Location data cleared from SharedPreferences', name: 'SharedPreferences');
+    log('Location data cleared from SharedPreferences',
+        name: 'SharedPreferences');
     update();
   }
 
@@ -48,9 +50,11 @@ class LocationController extends GetxController implements GetxService {
 
     // Check Location Permission
     await Geolocator.checkPermission().then((value) async {
-      if (value != LocationPermission.always && value != LocationPermission.whileInUse) {
+      if (value != LocationPermission.always &&
+          value != LocationPermission.whileInUse) {
         await Geolocator.requestPermission();
-      } else if (value == LocationPermission.denied || value == LocationPermission.deniedForever) {
+      } else if (value == LocationPermission.denied ||
+          value == LocationPermission.deniedForever) {
         await Geolocator.openAppSettings();
       } else {
         return;
@@ -72,7 +76,8 @@ class LocationController extends GetxController implements GetxService {
     // -- Update Location --
     // -- Fetch Address --
     if (!noAddress) {
-      await getAddressFromLocation(latLng ?? const LatLng(19.198545796504945, 72.95579630029403));
+      await getAddressFromLocation(
+          latLng ?? const LatLng(19.198545796504945, 72.95579630029403));
     }
 
     _isLoading = false;
@@ -83,6 +88,15 @@ class LocationController extends GetxController implements GetxService {
   Future<void> getAddressFromLocation(LatLng latLong) async {
     _isLoading = true;
     update();
+
+    if (latLong.latitude == 0.0 && latLong.longitude == 0.0) {
+      log("Invalid LatLng (0.0, 0.0) — skipping reverse geocoding",
+          name: "Location");
+      location = "Unknown location";
+      _isLoading = false;
+      update();
+      return;
+    }
 
     await placemarkFromCoordinates(latLong.latitude, latLong.longitude)
         .then((placeMark) {
@@ -102,7 +116,6 @@ class LocationController extends GetxController implements GetxService {
     _isLoading = false;
     update();
   }
-
 
   Timer? timer;
   bool isSearch = false;

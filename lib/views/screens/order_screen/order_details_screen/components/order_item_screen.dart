@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:village_wheels/controllers/order_controller.dart';
-import 'package:village_wheels/views/base/custom_image.dart';
+import 'package:village_wheels_delivery_boy/controllers/order_controller/order_controller.dart';
+import 'package:village_wheels_delivery_boy/views/base/custom_image.dart';
 
 class OrderItemScreen extends StatelessWidget {
   const OrderItemScreen({super.key});

@@ -65,6 +65,8 @@ dependencies:
   flutter_html: ^3.0.0-beta.2
   just_audio: ^0.9.42
   pusher_channels_flutter: ^2.5.0
+  dotted_border:
+  flutter_keyboard_visibility:
 
 dev_dependencies:
   flutter_test:
@@ -89,6 +91,28 @@ flutter:
     - assets/lotties/
     - assets/svgs/
     - assets/sounds/
+    - assets/gifs/
+
+
+fonts:
+  - family: Lato
+    fonts:
+      - asset: assets/fonts/Lato-Regular.ttf
+        weight: 400
+  - family: Poppins
+    fonts:
+      - asset: assets/fonts/Poppins-Regular.ttf
+        weight: 400
+      - asset: assets/fonts/Poppins-Medium.ttf
+        weight: 500
+      - asset: assets/fonts/Poppins-SemiBold.ttf
+        weight: 600
+      - asset: assets/fonts/Poppins-Bold.ttf
+        weight: 700
+      - asset: assets/fonts/Poppins-ExtraBold.ttf
+        weight: 800
+      - asset: assets/fonts/Poppins-Black.ttf
+        weight: 900
 
 flutter_assets:
   assets_path: assets/

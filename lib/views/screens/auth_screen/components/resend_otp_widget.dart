@@ -40,8 +40,7 @@ class ResendOtpWidget extends StatelessWidget {
               ' in ${controller.resendOtpTimer} seconds',
             ) : Text(
               'Resend OTP',
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                fontSize: 20,
+              style: Theme.of(context).textTheme.labelMedium!.copyWith(
                 fontWeight: FontWeight.w600,
                 color: primaryColor,
               ),

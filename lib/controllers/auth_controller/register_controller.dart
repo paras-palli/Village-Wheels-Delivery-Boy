@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:village_wheels_delivery_boy/controllers/auth_controller/auth_controller.dart';
@@ -67,18 +68,71 @@ class RegisterController extends GetxController implements GetxService {
   TextEditingController phone = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController address = TextEditingController();
-  //----signup page 03------
+  File? profileImage;
+  // final ImagePicker _picker = ImagePicker();
+
+  // Future<void> pickImage(ImageSource source) async {
+  //   final pickedFile = await _picker.pickImage(source: source, imageQuality: 75);
+  //   if (pickedFile != null) {
+  //     profileImage = File(pickedFile.path);
+  //     update(); // triggers UI update
+  //   }
+  // }
+
+  void updateprofileImage(File file) {
+    profileImage = file;
+    update();
+  }
+  //----signup page 02------
+  TextEditingController mapAddress = TextEditingController();
   TextEditingController streetOne = TextEditingController();
   TextEditingController streetTwo = TextEditingController();
   TextEditingController pincode = TextEditingController();
   TextEditingController state = TextEditingController();
   TextEditingController city = TextEditingController();
+  String? statename;
+  String? stateid;
+  String? latitude;
+  String? longitude;
 
-  //----signup page 04-------
+
+
+
+
+
+  //----signup page 03-------
+  TextEditingController aadharCardNumber = TextEditingController();
+  TextEditingController panCardNumber = TextEditingController();
   File? selectedPancard;
-  File? selectedDrivingLicense;
   File? selectedAadhaarCard;
   File? selectedAadhaarBackCard;
+
+  void updatePancardImage(File file) {
+    selectedPancard = file;
+    update();
+  }
+  void updateAadhaarCardImage(File file) {
+    selectedAadhaarCard = file;
+    update();
+  }
+  void updateAadhaarBackCardImage(File file) {
+    selectedAadhaarBackCard = file;
+    update();
+  }
+
+  //----signup page 04-------
+  File? selectedDrivingLicense;
+  File? selectedRcBook;
+  TextEditingController vehiclenumbercontroller = TextEditingController();
+  void updateDrivingLicenseImage(File file) {
+    selectedDrivingLicense = file;
+    update();
+  }
+  void updateRcBookImage(File file) {
+    selectedRcBook = file;
+    update();
+  }
+
   //---signup page 05------
   TextEditingController payeeName = TextEditingController();
   TextEditingController accountNumber = TextEditingController();
@@ -87,8 +141,7 @@ class RegisterController extends GetxController implements GetxService {
   TextEditingController bankName = TextEditingController();
   TextEditingController branchName = TextEditingController();
   File? selecedCancelCheck;
-  TextEditingController aadharCardNumber = TextEditingController();
-  TextEditingController panCardNumber = TextEditingController();
+
 
   // -------- Prefill Data ---------
   void prefillProfileData() {
@@ -206,6 +259,7 @@ class RegisterController extends GetxController implements GetxService {
   //------selecte file--------
   void selectFiles({
     bool isDrivingLicense = false,
+    bool isRcBook = false,
     bool isAadharCard = false,
     bool isAadharBackCard = false,
     bool isPancard = false,
@@ -222,6 +276,8 @@ class RegisterController extends GetxController implements GetxService {
       selecedCancelCheck = val;
     } else if (isAadharBackCard) {
       selectedAadhaarBackCard = val;
+    }else if(isRcBook){
+      selectedRcBook=val;
     }
     update();
   }
@@ -229,6 +285,9 @@ class RegisterController extends GetxController implements GetxService {
   //
   void removeFiles({
     bool isDrivingLicense = false,
+    bool isProfile = false,
+    bool isRcBook = false,
+
     bool isAadharCard = false,
     bool isAadharBackCard = false,
     bool isPancard = false,
@@ -244,6 +303,10 @@ class RegisterController extends GetxController implements GetxService {
       selecedCancelCheck = null;
     } else if (isAadharBackCard) {
       selectedAadhaarBackCard = null;
+    }else if (isProfile) {
+      profileImage = null;
+    }else if(isRcBook){
+      selectedRcBook=null;
     }
 
     update();
