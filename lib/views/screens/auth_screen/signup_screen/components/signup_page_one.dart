@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:village_wheels/controllers/auth_controller.dart';
-import 'package:village_wheels/controllers/register_controller.dart';
-import 'package:village_wheels/services/input_decoration.dart';
-import 'package:village_wheels/views/base/custom_image.dart';
-import 'package:village_wheels/views/screens/auth_screens/signup_screen/signup_four_screen/signup_page_four.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/instance_manager.dart';
+import 'package:village_wheels_delivery_boy/controllers/auth_controller/register_controller.dart';
+import 'package:village_wheels_delivery_boy/generated/assets.dart';
+import 'package:village_wheels_delivery_boy/services/input_decoration.dart';
+
+import '../signup_four_screen/signup_page_four.dart';
 
 class SignupPageOne extends StatelessWidget {
   const SignupPageOne({super.key});
@@ -15,7 +16,7 @@ class SignupPageOne extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ImageAndTitleWidget(
+          const ImageAndTitleWidget(
             image: Assets.imagesPersonaldetail,
             title: "Personal Details",
           ),
@@ -26,16 +27,16 @@ class SignupPageOne extends StatelessWidget {
             decoration: CustomDecoration.inputDecoration(
               floating: true,
               label: 'Full Name',
-              labelColor: Color(0xffF97316),
-              borderColor: Color(0xff1E3A8A),
+              labelColor: const Color(0xffF97316),
+              borderColor: const Color(0xff1E3A8A),
               borderWidth: 0.5,
               borderRadius: 8,
               hintStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
-                    color: Color(0xff6B7280),
+                    color: const Color(0xff6B7280),
                     fontWeight: FontWeight.w300,
                     fontSize: 14,
                   ),
-              contentPadding: EdgeInsets.all(16),
+              contentPadding: const EdgeInsets.all(16),
               hint: 'Enter Your Name',
             ),
             validator: (val) {
@@ -46,33 +47,33 @@ class SignupPageOne extends StatelessWidget {
             },
           ),
           const SizedBox(height: 20),
-          GetBuilder<AuthController>(
-            builder: (authCtrl) {
+          GetBuilder<RegisterController>(
+            builder: (regCtrl) {
               return TextFormField(
                 readOnly: true,
                 enabled: false,
                 controller: TextEditingController(
-                  text: '+91 ${authCtrl.numberController.text}',
+                  text: '+91 ${regCtrl.phone}',
                 ),
                 keyboardType: TextInputType.text,
                 decoration: CustomDecoration.inputDecoration(
                   floating: true,
                   label: 'Phone Number',
-                  labelColor: Color(0xffF97316),
-                  borderColor: Color(0xff1E3A8A),
+                  labelColor: const Color(0xffF97316),
+                  borderColor: const Color(0xff1E3A8A),
                   borderWidth: 0.5,
                   borderRadius: 8,
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.phone,
                     size: 25,
                     color: Color(0xffA2A2A4),
                   ),
                   hintStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
-                        color: Color(0xff6B7280),
+                        color: const Color(0xff6B7280),
                         fontWeight: FontWeight.w300,
                         fontSize: 14,
                       ),
-                  contentPadding: EdgeInsets.all(16),
+                  contentPadding: const EdgeInsets.all(16),
                 ),
               );
             },
@@ -83,17 +84,17 @@ class SignupPageOne extends StatelessWidget {
             decoration: CustomDecoration.inputDecoration(
               floating: true,
               label: 'Email Address(Optional)',
-              labelColor: Color(0xffF97316),
-              borderColor: Color(0xff1E3A8A),
+              labelColor: const Color(0xffF97316),
+              borderColor: const Color(0xff1E3A8A),
               borderWidth: 0.5,
               borderRadius: 8,
               hintStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
-                    color: Color(0xff6B7280),
+                    color: const Color(0xff6B7280),
                     fontWeight: FontWeight.w300,
                     fontSize: 14,
                   ),
               hint: 'Enter Email Address(Optional)',
-              contentPadding: EdgeInsets.all(16),
+              contentPadding: const EdgeInsets.all(16),
             ),
             // validator: (val) {
             //   if (val!.isNotEmpty && val.isEmail) {

@@ -2,8 +2,12 @@
 class Assets {
   Assets._();
 
+  static const String imagesAddress = 'assets/images/address.png';
   static const String imagesAppLogo = 'assets/images/app_logo.png';
   static const String imagesBank = 'assets/images/Bank.png';
+  static const String imagesCongrats = 'assets/images/congrats.png';
+  static const String imagesDelete = 'assets/images/delete.png';
+  static const String imagesDocument = 'assets/images/document.gif';
   static const String imagesExclaim = 'assets/images/exclaim.png';
   static const String imagesFreshmart = 'assets/images/freshmart.png';
   static const String imagesGrocery = 'assets/images/grocery.png';
@@ -11,6 +15,7 @@ class Assets {
   static const String imagesLogin = 'assets/images/login.png';
   static const String imagesMedicine = 'assets/images/medicine.png';
   static const String imagesOtpLogin = 'assets/images/otp-login.png';
+  static const String imagesPersonaldetail = 'assets/images/personaldetail.png';
   static const String imagesPlaceholder = 'assets/images/placeholder.jpg';
   static const String imagesProfileUnderReview = 'assets/images/profile_under_review.png';
   static const String imagesRestront = 'assets/images/restront.png';
@@ -25,7 +30,12 @@ class Assets {
   static const String svgsDropdown = 'assets/svgs/dropdown.svg';
   static const String svgsFilter = 'assets/svgs/filter.svg';
   static const String svgsFilterFunnel = 'assets/svgs/filter_funnel.svg';
+  static const String svgsFrame3 = 'assets/svgs/Frame-3.svg';
+  static const String svgsFrame4 = 'assets/svgs/Frame-4.svg';
+  static const String svgsFrame5 = 'assets/svgs/Frame-5.svg';
+  static const String svgsFrame6 = 'assets/svgs/Frame-6.svg';
   static const String svgsGym = 'assets/svgs/gym.svg';
+  static const String svgsKyc = 'assets/svgs/kyc.svg';
   static const String svgsLogin = 'assets/svgs/login.svg';
   static const String svgsLogout = 'assets/svgs/logout.svg';
   static const String svgsNotification = 'assets/svgs/notification.svg';

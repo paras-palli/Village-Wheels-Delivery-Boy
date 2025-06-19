@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:village_wheels/views/base/custom_image.dart';
+import 'package:village_wheels_delivery_boy/views/base/custom_image.dart';
 
 class SorryScreen extends StatelessWidget {
   const SorryScreen({super.key});
@@ -14,7 +14,7 @@ class SorryScreen extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Colors.black12,
                 blurRadius: 16,
@@ -26,7 +26,7 @@ class SorryScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Stack(
+              const Stack(
                 clipBehavior: Clip.none,
                 alignment: Alignment.topCenter,
                 children: [
@@ -45,7 +45,7 @@ class SorryScreen extends StatelessWidget {
               Text(
                 'SORRY',
                 style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                      color: Color(0xffEC2717),
+                      color: const Color(0xffEC2717),
                       fontWeight: FontWeight.w700,
                       fontSize: 20,
                     ),
@@ -55,7 +55,7 @@ class SorryScreen extends StatelessWidget {
                 "Document Verification Failed\nUnfortunately, your documents\n could not be verified. Please\n review and upload the correct\n documents to proceed.",
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Color(0xff1E3A8A),
+                      color: const Color(0xff1E3A8A),
                       fontWeight: FontWeight.w500,
                       fontSize: 18,
                     ),
@@ -68,7 +68,7 @@ class SorryScreen extends StatelessWidget {
                   height: 48,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF1A3580),
+                      backgroundColor: const Color(0xFF1A3580),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),

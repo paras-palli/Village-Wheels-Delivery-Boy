@@ -2,6 +2,9 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:village_wheels_delivery_boy/controllers/auth_controller/register_controller.dart';
+import 'package:village_wheels_delivery_boy/services/theme.dart';
+import 'package:village_wheels_delivery_boy/views/base/custom_image.dart';
 
 class SignUpPageTwo extends StatefulWidget {
   const SignUpPageTwo({super.key, this.isFrmProfile = false});
@@ -26,19 +29,19 @@ class _SignUpPageTwoState extends State<SignUpPageTwo> {
                 Text(
                   "Choose Your Business to Start!",
                   textAlign: TextAlign.center,
-                  style: Theme.of(context)
-                      .textTheme
-                      .displayLarge!
-                      .copyWith(fontWeight: FontWeight.normal, fontSize: 30),
+                  style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                    fontSize: 30,
+                    fontWeight: FontWeight.normal,
+                  ),
                 ),
                 const SizedBox(height: 15),
                 Text(
                   "Become a partner by selecting the Business you’ll use.",
                   textAlign: TextAlign.center,
-                  style: Theme.of(context)
-                      .textTheme
-                      .displaySmall!
-                      .copyWith(fontWeight: FontWeight.w500, fontSize: 14),
+                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
                 const SizedBox(height: 20),
                 GridView.builder(
@@ -51,8 +54,7 @@ class _SignUpPageTwoState extends State<SignUpPageTwo> {
                     crossAxisSpacing: 10,
                   ),
                   itemBuilder: (context, index) {
-                    final bussiness = bussinessList[index];
-                    return BussinessItemWidget(bussiness: bussiness);
+                    return BussinessItemWidget(bussiness: bussinessList[index]);
                   },
                 )
               ],

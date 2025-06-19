@@ -1,9 +1,6 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
-import 'package:http/http.dart' as http;
-import 'package:path_provider/path_provider.dart' show getTemporaryDirectory;
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -27,36 +24,6 @@ class ExtraMethods {
         subject: 'AnyProperty',
         sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
       );
-    }
-  }
-
-  Future<void> shareProperty(BuildContext context, String title, String imageUrl) async {
-    log("Downloading Image: $imageUrl");
-
-    try {
-      final response = await http.get(Uri.parse(imageUrl));
-
-      if (response.statusCode == 200) {
-        final tempDir = await getTemporaryDirectory();
-        final filePath = '${tempDir.path}/shared_image.jpg';
-
-        File file = File(filePath);
-        await file.writeAsBytes(response.bodyBytes);
-
-        if (!context.mounted) return;
-
-        final box = context.findRenderObject() as RenderBox?;
-        await Share.shareXFiles(
-          [XFile(file.path)],
-          text: title,
-          subject: 'AnyProperty',
-          sharePositionOrigin: box != null ? box.localToGlobal(Offset.zero) & box.size : Rect.zero, // Avoid errors if box is null
-        );
-      } else {
-        log("Error: Failed to download image, status code: ${response.statusCode}");
-      }
-    } catch (e) {
-      log("Error while sharing: $e");
     }
   }
 
@@ -100,6 +67,21 @@ class ExtraMethods {
     } else {
       log('Could not launch $url');
     }
+  }
+
+  static bool isValidAadhaar(String input) {
+    final aadhaarRegExp = RegExp(r'^[2-9]{1}[0-9]{11}$');
+    return aadhaarRegExp.hasMatch(input);
+  }
+
+  static bool isValidPAN(String input) {
+    final panRegExp = RegExp(r'^[A-Z]{5}[0-9]{4}[A-Z]{1}$');
+    return panRegExp.hasMatch(input.toUpperCase());
+  }
+
+  static bool isValidDrivingLicense(String input) {
+    final dlRegExp = RegExp(r'^[A-Z]{2}[0-9]{2}[0-9]{4}[0-9]{7,8}$');
+    return dlRegExp.hasMatch(input.toUpperCase());
   }
 }
 

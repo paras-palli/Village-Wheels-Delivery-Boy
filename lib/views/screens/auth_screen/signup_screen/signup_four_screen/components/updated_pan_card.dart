@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:village_wheels/controllers/register_controller.dart';
-import 'package:village_wheels/services/route_helper.dart';
-import 'package:village_wheels/views/base/image_picker_sheet.dart';
-import 'package:village_wheels/views/screens/auth_screens/signup_screen/components/components/icons_widget.dart';
-import 'package:village_wheels/views/screens/auth_screens/signup_screen/components/components/show_image.dart';
+import 'package:village_wheels_delivery_boy/controllers/auth_controller/register_controller.dart';
+import 'package:village_wheels_delivery_boy/services/route_helper.dart';
+import 'package:village_wheels_delivery_boy/views/base/image_picker_sheet.dart';
+
+import '../../components/components/icons_widget.dart';
+import '../../components/components/show_image.dart';
 
 class updatedpanwidget extends StatelessWidget {
   const updatedpanwidget({
@@ -24,16 +25,10 @@ class updatedpanwidget extends StatelessWidget {
                 GestureDetector(
                   onTap: () async {
                     if (regiCtrl.selectedPancard != null) {
-                      Navigator.of(context).push(
-                        getCustomRoute(
-                          child: ShowImage(img: regiCtrl.selectedPancard!),
-                        ),
-                      );
+                      Navigator.of(context).push(getCustomRoute(child: ShowImage(img: regiCtrl.selectedPancard!)));
                     } else {
                       await getImageBottomSheet(context).then((value) {
-                        if (value != null) {
-                          regiCtrl.selectFiles(isPancard: true, val: value);
-                        }
+                        if (value != null) regiCtrl.selectFiles(isPancard: true, val: value);
                       });
                     }
                   },
@@ -94,9 +89,7 @@ class updatedpanwidget extends StatelessWidget {
                         ),
                         if (regiCtrl.selectedPancard != null)
                           IconButton(
-                            onPressed: () {
-                              regiCtrl.removeFiles(isPancard: true);
-                            },
+                            onPressed: () => regiCtrl.removeFiles(isPancard: true),
                             icon: const IconsWidget(
                               icon: Icons.delete,
                               color: Colors.red,

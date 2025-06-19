@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:village_wheels/services/theme.dart';
-import 'package:village_wheels/views/base/custom_image.dart';
+import 'package:village_wheels_delivery_boy/generated/assets.dart';
+import 'package:village_wheels_delivery_boy/services/theme.dart';
+import 'package:village_wheels_delivery_boy/views/base/custom_image.dart';
 import 'congratulation_dialog.dart';
 
 class DocumentScreen extends StatefulWidget {
@@ -19,13 +20,13 @@ class _DocumentScreenState extends State<DocumentScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 200),
-            CustomImage(
+            const SizedBox(height: 200),
+            const CustomImage(
               path: Assets.imagesDocument,
               fit: BoxFit.cover,
               height: 139,
             ),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             Text(
               "We're reviewing your documents",
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
@@ -34,7 +35,7 @@ class _DocumentScreenState extends State<DocumentScreen> {
                     fontSize: 20,
                   ),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Text(
               "You'll be notified once the",
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
@@ -43,7 +44,7 @@ class _DocumentScreenState extends State<DocumentScreen> {
                     fontSize: 18,
                   ),
             ),
-            SizedBox(height: 2),
+            const SizedBox(height: 2),
             Text(
               "verification is complete.",
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
@@ -52,13 +53,13 @@ class _DocumentScreenState extends State<DocumentScreen> {
                     fontSize: 18,
                   ),
             ),
-            SizedBox(height: 400),
+            const SizedBox(height: 400),
             GestureDetector(
               onTap: () {
                 showDialog(
                   context: context,
                   barrierDismissible: false,
-                  builder: (context) => CongratulationsDialog(),
+                  builder: (context) => const CongratulationsDialog(),
                 );
               },
               child: Container(

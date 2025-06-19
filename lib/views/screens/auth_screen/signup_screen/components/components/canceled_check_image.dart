@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:village_wheels/views/screens/auth_screens/signup_screen/components/components/show_image.dart';
+import 'package:village_wheels_delivery_boy/controllers/auth_controller/register_controller.dart';
 
 import '../../../../../../controllers/auth_controller/auth_controller.dart';
-import '../../../../../../controllers/register_controller.dart';
 import '../../../../../../services/route_helper.dart';
 import '../../../../../base/custom_image.dart';
 import '../../../../../base/image_picker_sheet.dart';
 import 'icons_widget.dart';
+import 'show_image.dart';
 
 class CancelCheckImageWidget extends StatelessWidget {
   const CancelCheckImageWidget({super.key});
@@ -83,19 +83,6 @@ class CancelCheckImageWidget extends StatelessWidget {
                               fit: BoxFit.cover,
                             ),
                           )
-                        // : userID != null &&
-                        //         controller
-                        //                 .clientModel?.drugLicenseCertificate !=
-                        //             null
-                        //     ? ClipRRect(
-                        //         borderRadius: BorderRadius.circular(10),
-                        //         child: CustomImage(
-                        //           viewFullScreen: true,
-                        //           path:
-                        //               "${controller.clientModel?.drugLicenseCertificate}",
-                        //           fit: BoxFit.cover,
-                        //         ),
-                        //       )
                         : Center(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,

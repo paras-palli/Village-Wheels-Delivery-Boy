@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:village_wheels/controllers/auth_controller.dart';
-import 'package:village_wheels/controllers/register_controller.dart';
-import 'package:village_wheels/services/extra_methods.dart';
-import 'package:village_wheels/services/input_decoration.dart';
-import 'package:village_wheels/services/route_helper.dart';
-import 'package:village_wheels/views/base/image_picker_sheet.dart';
-import 'package:village_wheels/views/screens/auth_screens/signup_screen/components/components/icons_widget.dart';
-import 'package:village_wheels/views/screens/auth_screens/signup_screen/components/components/show_image.dart';
+import 'package:village_wheels_delivery_boy/controllers/auth_controller/auth_controller.dart';
+import 'package:village_wheels_delivery_boy/controllers/auth_controller/register_controller.dart';
+import 'package:village_wheels_delivery_boy/services/extra_methods.dart';
+import 'package:village_wheels_delivery_boy/services/input_decoration.dart';
+import 'package:village_wheels_delivery_boy/services/route_helper.dart';
+import 'package:village_wheels_delivery_boy/views/base/image_picker_sheet.dart';
+import 'package:village_wheels_delivery_boy/views/screens/auth_screen/signup_screen/components/components/show_image.dart';
+
+import '../../components/components/icons_widget.dart';
 
 class UpdatedAadharCardFront extends StatefulWidget {
   const UpdatedAadharCardFront({super.key});
@@ -39,24 +40,20 @@ class _UpdatedAadharCardFrontState extends State<UpdatedAadharCardFront> {
                   decoration: CustomDecoration.inputDecoration(
                     floating: true,
                     label: "Enter Aadhar Card Number ",
-                    labelColor: Color(0xffF97316),
-                    borderColor: Color(0xff1E3A8A),
+                    labelColor: const Color(0xffF97316),
+                    borderColor: const Color(0xff1E3A8A),
                     borderWidth: 0.5,
                     borderRadius: 8,
                     hint: "Aadhar Card",
                   ),
                   validator: (value) {
-                    // if (value!.isEmpty) {
-                    //   return 'Enter Aadhar Number';
-                    // }
-                    if (value!.isNotEmpty &&
-                        !ExtraMethods.isValidAadhaar(value)) {
+                    if (value!.isNotEmpty && !ExtraMethods.isValidAadhaar(value)) {
                       return "Invalid Aadhar Number";
                     }
                     return null;
                   },
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Text(
                   "Upload Aadhar Card ",
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -65,7 +62,7 @@ class _UpdatedAadharCardFrontState extends State<UpdatedAadharCardFront> {
                         fontWeight: FontWeight.w500,
                       ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -76,19 +73,10 @@ class _UpdatedAadharCardFrontState extends State<UpdatedAadharCardFront> {
                           GestureDetector(
                             onTap: () async {
                               if (regiCtrl.selectedAadhaarCard != null) {
-                                Navigator.of(context).push(
-                                  getCustomRoute(
-                                    child: ShowImage(
-                                        img: regiCtrl.selectedAadhaarCard!),
-                                  ),
-                                );
+                                Navigator.of(context).push(getCustomRoute(child: ShowImage(img: regiCtrl.selectedAadhaarCard!)));
                               } else {
-                                await getImageBottomSheet(context)
-                                    .then((value) {
-                                  if (value != null) {
-                                    regiCtrl.selectFiles(
-                                        isAadharCard: true, val: value);
-                                  }
+                                await getImageBottomSheet(context).then((value) {
+                                  if (value != null) regiCtrl.selectFiles(isAadharCard: true, val: value);
                                 });
                               }
                             },
@@ -116,8 +104,8 @@ class _UpdatedAadharCardFrontState extends State<UpdatedAadharCardFront> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        Icon(Icons.camera_alt,
-                                            color: const Color(0xFF233A7D),
+                                        const Icon(Icons.camera_alt,
+                                            color: Color(0xFF233A7D),
                                             size: 32),
                                         const SizedBox(height: 8),
                                         Text(
@@ -126,7 +114,7 @@ class _UpdatedAadharCardFrontState extends State<UpdatedAadharCardFront> {
                                               .textTheme
                                               .labelLarge!
                                               .copyWith(
-                                                color: Color(0xff233A7D),
+                                                color: const Color(0xff233A7D),
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 12,
                                               ),
@@ -172,7 +160,7 @@ class _UpdatedAadharCardFrontState extends State<UpdatedAadharCardFront> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 20),
+                    const SizedBox(width: 20),
                     Expanded(
                       child: Stack(
                         clipBehavior: Clip.none,
@@ -219,8 +207,8 @@ class _UpdatedAadharCardFrontState extends State<UpdatedAadharCardFront> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        Icon(Icons.camera_alt,
-                                            color: const Color(0xFF233A7D),
+                                        const Icon(Icons.camera_alt,
+                                            color: Color(0xFF233A7D),
                                             size: 32),
                                         const SizedBox(height: 8),
                                         Text(
@@ -229,7 +217,7 @@ class _UpdatedAadharCardFrontState extends State<UpdatedAadharCardFront> {
                                               .textTheme
                                               .labelLarge!
                                               .copyWith(
-                                                color: Color(0xff233A7D),
+                                                color: const Color(0xff233A7D),
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 12,
                                               ),

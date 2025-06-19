@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:village_wheels_delivery_boy/controllers/auth_controller/auth_controller.dart';
+import 'package:village_wheels_delivery_boy/controllers/auth_controller/register_controller.dart';
+import 'package:village_wheels_delivery_boy/services/route_helper.dart';
+import 'package:village_wheels_delivery_boy/views/base/custom_image.dart';
+import 'package:village_wheels_delivery_boy/views/base/image_picker_sheet.dart';
 
-import '../../../../../../controllers/auth_controller/auth_controller.dart';
-import '../../../../../../controllers/register_controller.dart';
-import '../../../../../../services/route_helper.dart';
-import '../../../../../base/custom_image.dart';
-import '../../../../../base/image_picker_sheet.dart';
 import 'icons_widget.dart';
 import 'show_image.dart';
 
@@ -53,19 +53,13 @@ class DrivingLicenceImageWidget extends StatelessWidget {
                 GestureDetector(
                   onTap: () async {
                     if (controller.selectedDrivingLicense != null) {
-                      Navigator.of(context).push(
-                        getCustomRoute(
-                          child: ShowImage(
-                              img: controller.selectedDrivingLicense!),
-                        ),
-                      );
+                      Navigator.of(context).push(getCustomRoute(child: ShowImage(img: controller.selectedDrivingLicense!)));
                       return;
                     }
 
                     await getImageBottomSheet(context).then((value) {
                       if (value != null) {
-                        controller.selectFiles(
-                            isDrivingLicense: true, val: value);
+                        controller.selectFiles(isDrivingLicense: true, val: value);
                       }
                     });
                   },
@@ -127,18 +121,15 @@ class DrivingLicenceImageWidget extends StatelessWidget {
                       child: Row(
                         children: [
                           IconButton(
-                              onPressed: () async {
-                                await getImageBottomSheet(context)
-                                    .then((value) {
-                                  if (value != null) {
-                                    controller.selectFiles(
-                                        isDrivingLicense: true, val: value);
-                                  }
-                                });
-                              },
-                              icon: const IconsWidget(
-                                icon: Icons.edit,
-                              )),
+                            onPressed: () async {
+                              await getImageBottomSheet(context).then((value) {
+                                if (value != null) {
+                                  controller.selectFiles(isDrivingLicense: true, val: value);
+                                }
+                              });
+                            },
+                            icon: const IconsWidget(icon: Icons.edit),
+                          ),
                           if (controller.selectedDrivingLicense != null)
                             IconButton(
                               onPressed: () {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:village_wheels_delivery_boy/controllers/auth_controller/register_controller.dart';
 
 import '../../../../../../controllers/auth_controller/auth_controller.dart';
-import '../../../../../../controllers/register_controller.dart';
 import '../../../../../../services/route_helper.dart';
 import '../../../../../base/custom_image.dart';
 import '../../../../../base/image_picker_sheet.dart';

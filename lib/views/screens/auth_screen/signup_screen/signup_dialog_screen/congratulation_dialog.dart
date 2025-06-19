@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:village_wheels/services/route_helper.dart';
+import 'package:village_wheels_delivery_boy/services/route_helper.dart';
+import 'package:village_wheels_delivery_boy/views/base/custom_image.dart';
 
-import 'package:village_wheels/views/base/custom_image.dart';
-import 'package:village_wheels/views/screens/auth_screens/signup_screen/signup_dialog_screen/sorry_screen.dart';
+import 'sorry_screen.dart';
 
 class CongratulationsDialog extends StatelessWidget {
   const CongratulationsDialog({super.key});
@@ -29,7 +29,7 @@ class CongratulationsDialog extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Stack(
+              const Stack(
                 clipBehavior: Clip.none,
                 alignment: Alignment.topCenter,
                 children: [
@@ -78,7 +78,7 @@ class CongratulationsDialog extends StatelessWidget {
                       elevation: 2,
                     ),
                     onPressed: () {
-                      Navigator.push(context, getCustomRoute(child: SorryScreen()));
+                      Navigator.push(context, getCustomRoute(child: const SorryScreen()));
                     },
                     child: const Text(
                       'Get Started',

@@ -5,14 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:village_wheels/controllers/location_controller.dart';
-import 'package:village_wheels/services/route_helper.dart';
-import 'package:village_wheels/views/screens/auth_screens/signup_screen/choose_location_screen/choose_location_screen.dart';
-
-import '../../../../../controllers/register_controller.dart';
+import 'package:village_wheels_delivery_boy/controllers/auth_controller/register_controller.dart';
+import 'package:village_wheels_delivery_boy/controllers/location_controller.dart';
+import 'package:village_wheels_delivery_boy/services/route_helper.dart';
 import '../../../../../generated/assets.dart';
 import '../../../../../services/input_decoration.dart';
 import '../../../../base/common_button.dart';
+import '../choose_location_screen/choose_location_screen.dart';
 
 class SignupPageThree extends StatefulWidget {
   const SignupPageThree({super.key, this.isFrmProfile = false});

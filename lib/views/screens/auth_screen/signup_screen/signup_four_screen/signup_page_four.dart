@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:village_wheels/controllers/auth_controller.dart';
-import 'package:village_wheels/controllers/register_controller.dart';
-import 'package:village_wheels/services/input_decoration.dart';
-import 'package:village_wheels/views/base/custom_image.dart';
-import 'package:village_wheels/views/screens/auth_screens/signup_screen/signup_four_screen/components/updated_aadhar_card_front.dart';
-import 'package:village_wheels/views/screens/auth_screens/signup_screen/signup_four_screen/components/updated_pan_card.dart';
+import 'package:village_wheels_delivery_boy/controllers/auth_controller/auth_controller.dart';
+import 'package:village_wheels_delivery_boy/controllers/auth_controller/register_controller.dart';
+import 'package:village_wheels_delivery_boy/services/extra_methods.dart';
+import 'package:village_wheels_delivery_boy/services/input_decoration.dart';
+import 'package:village_wheels_delivery_boy/views/base/custom_image.dart';
 
-import '../../../../../services/extra_methods.dart';
+import 'components/updated_aadhar_card_front.dart';
+import 'components/updated_pan_card.dart';
 
 class SignupPageFour extends StatelessWidget {
   SignupPageFour({super.key});
@@ -23,7 +23,6 @@ class SignupPageFour extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<AuthController>(
       builder: (authCtrl) {
-        // final data = authCtrl.userModel;
         return GetBuilder<RegisterController>(
           builder: (regiCtrl) {
             return Scaffold(
@@ -32,8 +31,8 @@ class SignupPageFour extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ImageAndTitleWidget(
-                        image: Assets.imagesKyc,
+                      const ImageAndTitleWidget(
+                        image: Assets.svgsKyc,
                         title: 'KYC Details',
                       ),
                       const SizedBox(height: 16),
@@ -65,8 +64,8 @@ class SignupPageFour extends StatelessWidget {
                                         .labelLarge
                                         ?.copyWith(
                                           color: regiCtrl.selectedTab == i
-                                              ? Color(0xff233A7D)
-                                              : Color(0xff6B7280),
+                                              ? const Color(0xff233A7D)
+                                              : const Color(0xff6B7280),
                                           fontWeight: regiCtrl.selectedTab == i
                                               ? FontWeight.w500
                                               : FontWeight.w500,
@@ -83,17 +82,17 @@ class SignupPageFour extends StatelessWidget {
                         builder: (_) {
                           switch (regiCtrl.selectedTab) {
                             case 0:
-                              return UpdatedAadharCardFront();
+                              return const UpdatedAadharCardFront();
                             case 1:
-                              return UpdatePanCardWidget();
+                              return const UpdatePanCardWidget();
                             case 2:
-                              return SizedBox.shrink();
+                              return const SizedBox.shrink();
                             default:
                               return const SizedBox.shrink();
                           }
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 260,
                       ),
                       if (regiCtrl.selectedTab == 2)
@@ -104,7 +103,7 @@ class SignupPageFour extends StatelessWidget {
                                 .textTheme
                                 .labelLarge!
                                 .copyWith(
-                                  color: Color(0xff6B7280),
+                                  color: const Color(0xff6B7280),
                                   fontSize: 12,
                                   fontWeight: FontWeight.w300,
                                 ),
@@ -118,7 +117,7 @@ class SignupPageFour extends StatelessWidget {
                                 .textTheme
                                 .labelLarge!
                                 .copyWith(
-                                  color: Color(0xff263238),
+                                  color: const Color(0xff263238),
                                   fontSize: 12,
                                   fontWeight: FontWeight.w300,
                                 ),
@@ -158,23 +157,20 @@ class UpdatePanCardWidget extends StatelessWidget {
             decoration: CustomDecoration.inputDecoration(
               floating: true,
               label: "Enter Pan Card Number ",
-              labelColor: Color(0xffF97316),
-              borderColor: Color(0xff1E3A8A),
+              labelColor: const Color(0xffF97316),
+              borderColor: const Color(0xff1E3A8A),
               borderWidth: 0.5,
               borderRadius: 8,
               hint: "Pan Card",
             ),
             validator: (value) {
-              // if (value!.isEmpty) {
-              //   return 'Enter Pan Number';
-              // }
               if (value!.isNotEmpty && !ExtraMethods.isValidPAN(value)) {
                 return "Invalid Pan Number";
               }
               return null;
             },
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Text(
             "Upload Pan Card Photo ",
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -183,8 +179,8 @@ class UpdatePanCardWidget extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
           ),
-          SizedBox(height: 10),
-          updatedpanwidget()
+          const SizedBox(height: 10),
+          const updatedpanwidget()
         ],
       );
     });
@@ -213,7 +209,7 @@ class ImageAndTitleWidget extends StatelessWidget {
           style: Theme.of(context).textTheme.labelLarge?.copyWith(
                 fontSize: 24,
                 fontWeight: FontWeight.w500,
-                color: Color(0xff1E3A8A),
+                color: const Color(0xff1E3A8A),
               ),
         ),
       ],

@@ -3,16 +3,15 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'package:village_wheels/controllers/location_controller.dart';
-import 'package:village_wheels/controllers/register_controller.dart';
-import 'package:village_wheels/generated/assets.dart';
-import 'package:village_wheels/services/input_decoration.dart';
-import 'package:village_wheels/services/route_helper.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/instance_manager.dart';
+import 'package:village_wheels_delivery_boy/controllers/auth_controller/register_controller.dart';
+import 'package:village_wheels_delivery_boy/controllers/location_controller.dart';
+import 'package:village_wheels_delivery_boy/generated/assets.dart';
+import 'package:village_wheels_delivery_boy/services/input_decoration.dart';
+import 'package:village_wheels_delivery_boy/services/route_helper.dart';
 
-import 'package:village_wheels/views/base/custom_image.dart';
-import 'package:village_wheels/views/screens/auth_screens/signup_screen/choose_location_screen/choose_location_screen.dart';
-
+import '../choose_location_screen/choose_location_screen.dart';
 import '../signup_four_screen/signup_page_four.dart';
 import 'components/location_custom_widget.dart';
 
@@ -30,7 +29,7 @@ class _SignupPageThreeState extends State<SignupPageThree> {
     Timer.run(() async {
       final controller = Get.find<LocationController>();
       if (controller.location != null) return;
-      Navigator.of(context).push(getCustomRoute(child: ChooseLocationScreen()));
+      Navigator.of(context).push(getCustomRoute(child: const ChooseLocationScreen()));
     });
   }
 
@@ -51,19 +50,19 @@ class _SignupPageThreeState extends State<SignupPageThree> {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ImageAndTitleWidget(
+                      const ImageAndTitleWidget(
                         image: Assets.imagesAddress,
                         title: "Address Details",
                       ),
                       const SizedBox(height: 25),
-                      LocationCustomWidget(),
-                      SizedBox(height: 20),
+                      const LocationCustomWidget(),
+                      const SizedBox(height: 20),
                       TextFormField(
                         controller: registerCtrl.streetOne,
                         keyboardType: TextInputType.text,
                         decoration: CustomDecoration.inputDecoration(
                           floating: true,
-                          borderColor: Color(0xff1E3A8A),
+                          borderColor: const Color(0xff1E3A8A),
                           borderRadius: 8,
                           borderWidth: 0.5,
                           hint: 'Address Line 1',
@@ -81,12 +80,12 @@ class _SignupPageThreeState extends State<SignupPageThree> {
                         keyboardType: TextInputType.text,
                         decoration: CustomDecoration.inputDecoration(
                           floating: true,
-                          borderColor: Color(0xff1E3A8A),
+                          borderColor: const Color(0xff1E3A8A),
                           borderRadius: 8,
                           borderWidth: 0.5,
                           hint: 'Address Line 2 (Optional)',
                           label: "Address Line 2 (Optional)",
-                          labelColor: Color(0xffF97316),
+                          labelColor: const Color(0xffF97316),
                         ),
                       ),
                       const SizedBox(height: 20),
@@ -96,17 +95,16 @@ class _SignupPageThreeState extends State<SignupPageThree> {
                         keyboardType: TextInputType.text,
                         decoration: CustomDecoration.inputDecoration(
                           floating: true,
-                          borderColor: Color(0xff1E3A8A),
+                          borderColor: const Color(0xff1E3A8A),
                           borderWidth: 0.5,
                           borderRadius: 8,
                           label: "State",
-                          labelColor: Color(0xffF97316),
-                          hintStyle:
-                              Theme.of(context).textTheme.labelMedium?.copyWith(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black,
-                                  ),
+                          labelColor: const Color(0xffF97316),
+                          hintStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 20),
@@ -120,15 +118,15 @@ class _SignupPageThreeState extends State<SignupPageThree> {
                               decoration: CustomDecoration.inputDecoration(
                                 floating: true,
                                 label: 'City Name',
-                                labelColor: Color(0xffF97316),
-                                borderColor: Color(0xff1E3A8A),
+                                labelColor: const Color(0xffF97316),
+                                borderColor: const Color(0xff1E3A8A),
                                 borderRadius: 8,
                                 borderWidth: 0.5,
-                                contentPadding: EdgeInsets.all(15),
+                                contentPadding: const EdgeInsets.all(15),
                               ),
                             ),
                           ),
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           Expanded(
                             child: TextFormField(
                               readOnly: true,
@@ -139,22 +137,19 @@ class _SignupPageThreeState extends State<SignupPageThree> {
                                 LengthLimitingTextInputFormatter(6),
                               ],
                               keyboardType: Platform.isIOS
-                                  ? TextInputType.numberWithOptions(
-                                      signed: true, decimal: true)
+                                  ? const TextInputType.numberWithOptions(signed: true, decimal: true)
                                   : TextInputType.number,
                               decoration: CustomDecoration.inputDecoration(
                                 floating: true,
                                 label: 'Pin Code',
                                 borderRadius: 8,
-                                labelColor: Color(0xffF97316),
-                                borderColor: Color(0xff1E3A8A),
+                                labelColor: const Color(0xffF97316),
+                                borderColor: const Color(0xff1E3A8A),
                                 borderWidth: 0.5,
-                                contentPadding: EdgeInsets.all(15),
+                                contentPadding: const EdgeInsets.all(15),
                               ),
                               validator: (value) {
-                                if (value!.isEmpty && value.length < 6) {
-                                  return "Required";
-                                }
+                                if (value!.isEmpty && value.length < 6) return "Required";
                                 return null;
                               },
                             ),

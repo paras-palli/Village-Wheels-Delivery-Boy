@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/instance_manager.dart';
-import 'package:village_wheels_delivery_boy/controllers/auth_controller/auth_controller.dart';
 import 'package:village_wheels_delivery_boy/controllers/basic_controller.dart';
 import 'package:village_wheels_delivery_boy/services/enums/settings_enum.dart';
 
