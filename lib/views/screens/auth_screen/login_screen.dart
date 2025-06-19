@@ -102,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           elevation: 0,
                           onTap: () async {
                             Map<String, dynamic> data = {
-                              'phone': _phoneController,
+                              'phone': _phoneController.text.trim(),
                               'app_signature':
                               await Get.find<OTPAutofillController>().getAppSignature(),
                             };

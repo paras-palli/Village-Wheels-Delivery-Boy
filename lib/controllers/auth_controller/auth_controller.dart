@@ -50,7 +50,7 @@ class AuthController extends GetxController implements GetxService {
       Response response = await authRepo.verifyOtp(phone: phone, otp: otp);
       if (response.statusCode == 200 && (response.body as Map).containsKey('token')) {
         responseModel = ResponseModel(true, response.body['message'] ?? 'Otp Verified',
-          {'new': response.body['type'] == 'new'},
+          {'new': response.body['user_type'] == 'new'},
         );
         await setUserToken(token: response.body['token']);
       } else {

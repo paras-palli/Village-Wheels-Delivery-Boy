@@ -21,7 +21,7 @@ class PriceConverter {
   }
 
   static convertToNumberFormat(num price) {
-    final format = NumberFormat("#,##,##,##0.00", "en_IN");
+    final format = NumberFormat("#,##,##,###.##", "en_IN");
     return '₹ ${format.format(price)}';
   }
 }

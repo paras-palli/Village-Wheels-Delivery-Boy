@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 Color primaryColor = const Color.fromARGB(255, 2, 106, 190);
-Color secondaryColor = const Color(0xFFF5F0BB);
+Color secondaryColor = const Color(0xFFE4DC75);
 Color backgroundDark = const Color(0xff231F20);
 Color backgroundLight = const Color(0xffffffff);
 Color greyLight = const Color(0xFFD9D9D9);
@@ -73,30 +73,44 @@ class CustomTheme {
       ),
     ),
     typography: Typography.material2021(),
-    textTheme: TextTheme(
-      labelLarge: GoogleFonts.openSans(
+    textTheme: const TextTheme(
+      labelLarge: TextStyle(
+        fontWeight: FontWeight.w400,
+        color: textSecondary,
+        fontSize: 18.0,
+      ),
+      labelMedium: TextStyle(
+        fontWeight: FontWeight.w400,
+        color: textSecondary,
+        fontSize: 16.0,
+      ),
+      labelSmall: TextStyle(
         fontWeight: FontWeight.w400,
         color: textSecondary,
         fontSize: 14.0,
       ),
-      headlineLarge: GoogleFonts.sourceSans3(),
-      headlineMedium: GoogleFonts.sourceSans3(
-        fontWeight: FontWeight.bold,
-        fontSize: 28,
+      headlineLarge: TextStyle(
+        fontWeight: FontWeight.w600,
+        color: textSecondary,
+        fontSize: 18.0,
       ),
-      headlineSmall: GoogleFonts.openSans(),
-      displayLarge: GoogleFonts.openSans(),
-      displayMedium: GoogleFonts.openSans(),
-      displaySmall: GoogleFonts.openSans(),
-      titleLarge: GoogleFonts.openSans(),
-      titleMedium: GoogleFonts.openSans(),
-      titleSmall: GoogleFonts.openSans(),
-      bodyLarge: GoogleFonts.sourceSans3(
-        fontWeight: FontWeight.bold,
-        fontSize: 18,
+      headlineMedium: TextStyle(
+        fontWeight: FontWeight.w500,
+        color: textSecondary,
+        fontSize: 16.0,
       ),
-      bodyMedium: GoogleFonts.openSans(),
-      bodySmall: GoogleFonts.openSans(),
+      displayLarge: TextStyle(
+        fontSize: 27,
+        fontWeight: FontWeight.w600,
+      ),
+      displayMedium: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+      ),
+      displaySmall: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+      ),
     ),
   );
   static ThemeData dark = ThemeData(
