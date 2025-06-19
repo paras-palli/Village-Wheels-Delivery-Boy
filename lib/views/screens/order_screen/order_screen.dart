@@ -11,47 +11,38 @@ class OrderScreen extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Colors.white,
-          surfaceTintColor: Colors.white,
-          title: Text(
-            "Orders",
-            style: Theme.of(context).textTheme.labelLarge?.copyWith(
-              color: Colors.black,
-              fontWeight: FontWeight.w700,
-              fontSize: 18,
-            ),
-          ),
-          bottom: TabBar(
-            labelColor: primaryColor,
-            unselectedLabelColor: fontGrey,
-            indicatorColor: primaryColor,
-            dividerHeight: 1,
-            dividerColor: fontGrey,
-            indicatorSize: TabBarIndicatorSize.tab,
-            indicatorWeight: 2,
-            indicatorPadding: EdgeInsets.symmetric(horizontal: 10),
-            labelStyle: Theme.of(context).textTheme.labelLarge?.copyWith(color: primaryColor, fontSize: 15, fontWeight: FontWeight.w500),
-            unselectedLabelStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
-              color: fontGrey,
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-            ),
-            tabs: const [
-              Tab(text: "Ongoing"),
-              Tab(text: "Delivered"),
-              Tab(text: "Cancelled"),
-            ],
-          ),
-        ),
-        body: const TabBarView(
+        body: Column(
           children: [
-            OngoingScreen(),
-            OngoingScreen(),
-            OngoingScreen(),
-            // DeliverdScreen(),
-            // CancelledScreen(),
+            TabBar(
+              labelColor: primaryColor,
+              unselectedLabelColor: fontGrey,
+              indicatorColor: primaryColor,
+              dividerHeight: 1,
+              dividerColor: fontGrey,
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicatorWeight: 2,
+              indicatorPadding: const EdgeInsets.symmetric(horizontal: 10),
+              labelStyle: Theme.of(context).textTheme.labelLarge?.copyWith(color: primaryColor, fontSize: 15, fontWeight: FontWeight.w500),
+              unselectedLabelStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
+                color: fontGrey,
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+              ),
+              tabs: const [
+                Tab(text: "Ongoing"),
+                Tab(text: "Delivered"),
+                Tab(text: "Cancelled"),
+              ],
+            ),
+            Expanded(
+              child: const TabBarView(
+                children: [
+                  OngoingScreen(),
+                  OngoingScreen(),
+                  OngoingScreen(),
+                ],
+              ),
+            ),
           ],
         ),
       ),

@@ -7,6 +7,7 @@ import 'package:village_wheels_delivery_boy/controllers/dashboard_controller.dar
 import 'package:village_wheels_delivery_boy/controllers/location_controller.dart';
 import 'package:village_wheels_delivery_boy/controllers/order_controller/order_controller.dart';
 import 'package:village_wheels_delivery_boy/controllers/order_controller/pusher_controller.dart';
+import 'package:village_wheels_delivery_boy/data/repositories/order_repo.dart';
 
 import '../controllers/PermissionController.dart';
 import '../controllers/auth_controller/auth_controller.dart';
@@ -33,6 +34,7 @@ class Init {
       // Get Repo's...
       Get.lazyPut(() => AuthRepo(sharedPreferences: Get.find(), apiClient: Get.find()));
       Get.lazyPut(() => BasicRepo(apiClient: Get.find()));
+      Get.lazyPut(() => OrderRepo(apiClient: Get.find()));
 
 
       // Get Controller's...

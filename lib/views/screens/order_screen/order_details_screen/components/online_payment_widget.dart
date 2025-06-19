@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:village_wheels_delivery_boy/generated/assets.dart';
 
-class onlinePaymentWidget extends StatelessWidget {
-  const onlinePaymentWidget({
+class OnlinePaymentWidget extends StatelessWidget {
+  const OnlinePaymentWidget({
     super.key,
   });
 

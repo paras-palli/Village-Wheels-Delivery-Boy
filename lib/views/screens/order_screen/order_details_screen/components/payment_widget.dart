@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:village_wheels/controllers/order_controller.dart';
+import 'package:village_wheels_delivery_boy/controllers/order_controller/order_controller.dart';
 
 
 class paymentwidget extends StatelessWidget {
