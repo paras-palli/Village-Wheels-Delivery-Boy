@@ -14,7 +14,7 @@ class AuthRepo {
   final ApiClient apiClient;
   AuthRepo({required this.sharedPreferences, required this.apiClient});
 
-  Future<Response> generateOtp({required String phone}) async => await apiClient.postData(AppConstants.generateOtp, {"mobile": phone});
+  Future<Response> generateOtp({required Map<String, dynamic> data}) async => await apiClient.postData(AppConstants.generateOtp, data);
 
   Future<Response> verifyOtp({required String phone, required String otp}) async => await apiClient.postData(
     AppConstants.loginUri, {
@@ -24,13 +24,9 @@ class AuthRepo {
     },
   );
 
+  Future<Response> getUser() async => await apiClient.getData(AppConstants.getProfileData);
+
   Future<Response> logoutUser() async => await apiClient.getData(AppConstants.logoutUri);
-
-  Future<Response> getUser() async => await apiClient.getData(AppConstants.profileUri);
-
-  Future<Response> signUp({required FormData data}) async => await apiClient.postData(
-    AppConstants.signUp, data
-  );
 
   String getUserToken() {
     return sharedPreferences.getString(AppConstants.token) ?? "";

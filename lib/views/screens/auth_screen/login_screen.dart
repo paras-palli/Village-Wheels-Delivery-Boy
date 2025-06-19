@@ -108,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             };
                             log('$data');
                             if (_formKey.currentState!.validate()) {
-                              authController.login(data: data).then((value) {
+                              authController.generatedOtp(data: data).then((value) {
                                 if (value.isSuccess) {
                                   Navigator.push(
                                     context,

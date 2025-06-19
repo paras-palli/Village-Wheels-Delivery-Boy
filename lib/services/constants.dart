@@ -44,9 +44,12 @@ class AppConstants {
   static String googleMapAndroidKey = 'AIzaSyCPMgv3duvS967kagdXKvcn0eD72L3sdF4';
 
   // Auth
-  static const String generateOtp = 'api/v1/user/generate-otp';
-  static const String loginUri = 'api/v1/user/login';
-  static const String logoutUri = 'api/v1/user/logout';
+  static const String generateOtp = 'api/vendor/v1/auth/otp/send';
+  static const String loginUri = 'api/vendor/v1/auth/otp/verify';
+  static const String logoutUri = 'api/vendor/v1/auth/logout';
+
+  // Profile
+  static const String getProfileData = 'api/vendor/v1/auth/profile';
 
   //--------basic---------
   static const String settings = 'api/v1/basic/settings';

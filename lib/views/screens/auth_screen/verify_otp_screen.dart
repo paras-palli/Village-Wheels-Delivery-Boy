@@ -124,32 +124,25 @@ class OtpVerificationScreen extends StatelessWidget {
 
   //------------otp verify-----------
   void verifyOtp(BuildContext context, OTPAutofillController otpController, AuthController authController) {
-    Map<String, dynamic> data = {
-      "phone": phoneNumber,
-      "otp": otpController.currentCode,
-    };
-    log("$data");
     if (otpController.currentCode.isNotEmpty) {
-      authController.verifyOTP(data).then((value) {
+      authController.verifyOtp(otp: otpController.currentCode, phone: phoneNumber).then((value) {
         if (value.isSuccess) {
-          log(value.message);
-          if (value.message == 'new') {
+          log(value.message.toString(), name: 'OtpData');
+          if ((value.data as Map)['new']) {
             Navigator.pushAndRemoveUntil(
               context,
-              getCustomRoute(child: const SignupScreen()),
-                  (route) => false,
+              getCustomRoute(child: const SignupScreen()), (route) => false,
             );
-          } else if (value.message == 'old') {
-            authController.getUserProfileData().then(
-                  (value) {
-                if (value.isSuccess) {
-                  if (authController.userModel?.status == 'pending') {
-                    Navigator.of(context).pushAndRemoveUntil(getCustomRoute(child: const ProfileUnderReviewScreen()), (route) => false);
-                  } else if (authController.userModel?.status == 'active') {
-                    Navigator.of(context).pushAndRemoveUntil(getCustomRoute(child: const DashboardScreen()), (route) => false);
-                  }
+          } else {
+            authController.getUserProfileData().then((value) {
+              if (value.isSuccess) {
+                if (authController.userModel?.status == 'pending') {
+                  Navigator.of(context).pushAndRemoveUntil(getCustomRoute(child: const ProfileUnderReviewScreen()), (route) => false);
+                } else if (authController.userModel?.status == 'active') {
+                  Navigator.of(context).pushAndRemoveUntil(getCustomRoute(child: const DashboardScreen()), (route) => false);
                 }
-              },
+              }
+            },
             );
           }
         } else {

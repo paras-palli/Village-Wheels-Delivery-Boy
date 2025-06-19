@@ -16,14 +16,14 @@ class AuthController extends GetxController implements GetxService {
   bool isLoading = false;
   UserModel? userModel;
 
-  Future<ResponseModel> generatedOtp({required String phone}) async {
+  Future<ResponseModel> generatedOtp({required Map<String, dynamic> data}) async {
     log('----------- generatedOtp Called ----------');
 
     ResponseModel responseModel;
     isLoading = true;
     update();
     try {
-      Response response = await authRepo.generateOtp(phone: phone);
+      Response response = await authRepo.generateOtp(data: data);
       if (response.statusCode == 200 && response.body['success']) {
         responseModel = ResponseModel(true, response.body['message']?.toString() ?? 'Otp Generated');
       } else {
@@ -127,19 +127,5 @@ class AuthController extends GetxController implements GetxService {
 
   Future<void> setUserToken({required String token}) async {
     await authRepo.setUserToken(token);
-  }
-
-  //
-
-  bool checkUserPropertyCount() {
-    bool isUsePropertyCount = false;
-    if (userModel != null) {
-      if (userModel!.propertyCount == 0 && userModel!.propertiesCount == 0) {
-        isUsePropertyCount = true;
-      } else if (userModel!.propertyCount == userModel!.propertiesCount || userModel!.propertyCount == 0) {
-        isUsePropertyCount = true;
-      }
-    }
-    return isUsePropertyCount;
   }
 }

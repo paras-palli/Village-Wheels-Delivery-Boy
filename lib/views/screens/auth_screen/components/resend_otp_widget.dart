@@ -24,7 +24,7 @@ class ResendOtpWidget extends StatelessWidget {
             'app_signature': await controller.getAppSignature(),
           };
           log('$data');
-          Get.find<AuthController>().login(data: data).then((value) {
+          Get.find<AuthController>().generatedOtp(data: data).then((value) {
             showCustomToast(msg: value.message, toastType: !value.isSuccess ? ToastType.warning : null);
             if (value.isSuccess) controller.startResendOtpTimer();
           });
