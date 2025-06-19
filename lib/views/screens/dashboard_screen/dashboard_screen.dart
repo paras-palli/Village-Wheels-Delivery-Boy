@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:village_wheels_delivery_boy/controllers/dashboard_controller.dart';
 import 'package:village_wheels_delivery_boy/generated/assets.dart';
+import 'package:village_wheels_delivery_boy/views/screens/order_screen/order_screen.dart';
 
 import '../home_screen/home_screen.dart';
 import 'components/bottom_widget.dart';
@@ -46,7 +47,7 @@ class DashboardScreen extends StatelessWidget {
         builder: (controller) {
           return [
             const HomeScreen(),
-            const HomeScreen(),
+            const OrderScreen(),
           ][controller.dashPage];
         },
       ),

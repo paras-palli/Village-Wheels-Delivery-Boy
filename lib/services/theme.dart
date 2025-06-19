@@ -8,8 +8,9 @@ Color backgroundDark = const Color(0xff231F20);
 Color backgroundLight = const Color(0xffffffff);
 Color greyLight = const Color(0xffD9D9D9);
 Color greyDark = const Color(0xFF3B4652);
-const Color fontGrey = Color(0xFF3B4652);
+const Color fontGrey = Color(0xff6B7280);
 const Color green = Color(0xff00A030);
+const Color orange = Color(0xffE49A23);
 
 const Color textPrimary = Color(0xff000000);
 const Color textSecondary = Color(0xff838383);

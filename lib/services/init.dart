@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:village_wheels_delivery_boy/controllers/auth_controller/otp_controller.dart';
 import 'package:village_wheels_delivery_boy/controllers/dashboard_controller.dart';
 import 'package:village_wheels_delivery_boy/controllers/location_controller.dart';
+import 'package:village_wheels_delivery_boy/controllers/order_controller/order_controller.dart';
 import 'package:village_wheels_delivery_boy/controllers/order_controller/pusher_controller.dart';
 
 import '../controllers/PermissionController.dart';
@@ -37,6 +38,8 @@ class Init {
       // Get Controller's...
       Get.lazyPut(() => AuthController(authRepo: Get.find()));
       Get.lazyPut(() => BasicController(basicRepo: Get.find()));
+
+      Get.lazyPut(() => OrderController(orderRepo: Get.find()));
 
       Get.lazyPut(() => OTPAutofillController());
       Get.lazyPut(() => PusherController());
